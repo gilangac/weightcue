@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "994894599665",
+    "project_id": "weightcue",
+    "storage_bucket": "weightcue.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994894599665:android:9f5dbd776fb75592f82050",
+        "android_client_info": {
+          "package_name": "com.ta.weightcue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994894599665-0fvlpm8k4kqbhd37or44sj1t5pg0qsnk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ta.weightcue",
+            "certificate_hash": "2b55c7d27cd32c2bc683ca0e378927612601f292"
+          }
+        },
+        {
+          "client_id": "994894599665-kfg7d8e0ro35ds9p1v0q4bkql157r8t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIVWqSpxWdiaNYJ8bfgiBlaifd41kVygA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994894599665-kfg7d8e0ro35ds9p1v0q4bkql157r8t4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
