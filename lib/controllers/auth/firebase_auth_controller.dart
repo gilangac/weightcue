@@ -63,7 +63,12 @@ class FirebaseAuthController extends GetxController {
         .get()
         .then((QuerySnapshot snapshot) async {
       if (snapshot.size == 1) {
-        Get.offNamed(AppPages.HOME);
+        PreferenceService.setTypeUser(snapshot.docs.first['type'] ?? 0);
+        if (snapshot.docs.first['type'] == 0) {
+          Get.offNamed(AppPages.HOME);
+        } else if (snapshot.docs.first['type'] == 1) {
+          Get.offNamed(AppPages.HOME_AHLI);
+        }
       } else {
         await user.doc(auth.currentUser?.uid).set({
           "email": auth.currentUser?.email,

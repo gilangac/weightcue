@@ -5,6 +5,7 @@ class ArticleModel {
   String? judul;
   String? materi;
   String? imageUrl;
+  String? link;
   Timestamp? date;
 
   ArticleModel({
@@ -12,6 +13,7 @@ class ArticleModel {
     this.judul,
     this.materi,
     this.imageUrl,
+    this.link,
     this.date,
   });
 
@@ -20,6 +22,7 @@ class ArticleModel {
         judul: json["judul"],
         materi: json["materi"],
         imageUrl: json["imageUrl"],
+        link: json["link"],
         date: json["date"],
       );
 
@@ -28,6 +31,7 @@ class ArticleModel {
         "judul": judul,
         "materi": materi,
         "imageUrl": imageUrl,
+        "link": link,
         "date": date,
       };
 }

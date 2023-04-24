@@ -15,9 +15,12 @@ class ArticlePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(title: "Informasi Obesitas"),
+      appBar: appBar(
+        title: "Informasi Obesitas",
+      ),
       body: _body(),
       backgroundColor: AppColors.backgroundColor,
+      floatingActionButton: _fab(),
     );
   }
 
@@ -119,6 +122,7 @@ class ArticlePage extends StatelessWidget {
                   child: SizedBox(
                     height: 80,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(data.materi ?? "",
                             textAlign: TextAlign.justify,
@@ -154,5 +158,20 @@ class ArticlePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _fab() {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            shape: const CircleBorder(),
+            primary: AppColors.primaryColor,
+            elevation: 0.1),
+        onPressed: () {
+          Get.toNamed(AppPages.ADD_ARTICLE);
+        },
+        child: const Padding(
+          padding: EdgeInsets.all(4.0),
+          child: Icon(Icons.add),
+        ));
   }
 }

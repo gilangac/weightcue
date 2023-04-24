@@ -10,9 +10,10 @@ class PreferenceService extends GetxService {
   static const _keyFullname = 'fullname';
   static const _keyAvatar = 'avatar';
   static const _keyPhone = 'phone';
+  static const _keyTypeUser = 'typeUser';
 
   static Future init() async {
-    _preferences = await SharedPreferences.getInstance(); 
+    _preferences = await SharedPreferences.getInstance();
     return _preferences;
   }
 
@@ -85,4 +86,17 @@ class PreferenceService extends GetxService {
     if (data != null) return data;
     return null;
   }
+
+  static Future setTypeUser(int typeUser) async {
+    await _preferences.setInt(_keyTypeUser, typeUser);
+  }
+
+  static int? getTypeUser() {
+    final data = _preferences.getInt(_keyTypeUser);
+
+    if (data != null) return data;
+    return null;
+  }
+
+  
 }

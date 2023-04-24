@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'WeightCue!',
       theme: lightTheme(context),
-      initialRoute: isLogged ? AppPages.HOME : AppPages.LOGIN,
+      initialRoute: isLogged ? PreferenceService.getTypeUser() == 0 ?
+       AppPages.HOME : AppPages.HOME_AHLI : AppPages.LOGIN,
       getPages: AppRoutes.pages,
       defaultTransition: Transition.cupertino,
     );

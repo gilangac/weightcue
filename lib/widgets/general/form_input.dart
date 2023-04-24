@@ -14,6 +14,7 @@ Widget formInput(
     required TextInputType inputType,
     required TextInputAction inputAction,
     List<TextInputFormatter>? inputFormater,
+    int? maxLines = 1,
     bool secureText = false,
     bool enabled = true,
     bool suffix = false,
@@ -41,6 +42,7 @@ Widget formInput(
         obscureText: secureText,
         enabled: enabled,
         onTap: ontap,
+        maxLines: maxLines ?? 1,
         inputFormatters: inputFormater ?? [],
         decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(

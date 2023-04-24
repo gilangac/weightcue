@@ -12,6 +12,9 @@ class AppRoutes {
     GetPage(name: _Paths.DETAIL_ARTICLE, page: () => DetailArticlePage()),
     GetPage(name: _Paths.DIAGNOSIS, page: () => DiagnosisPage()),
     GetPage(name: _Paths.RESULT_DIAGNOSIS, page: () => ResultDiagnosisPage()),
+    //AHLI ROUTES
+    GetPage(name: _Paths.HOME_AHLI, page: () => HomeAhliPage()),
+    GetPage(name: _Paths.ADD_ARTICLE, page: () => AddArticlePage()),
     GetPage(
         name: _Paths.LOGIN,
         page: () => const LoginPage(),
