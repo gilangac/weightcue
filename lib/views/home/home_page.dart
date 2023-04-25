@@ -264,7 +264,7 @@ class HomePage extends StatelessWidget {
   Widget _listAction2({
     IconData? icon,
     required String title,
-    required String path,
+    String? path,
     String? type,
   }) {
     return SizedBox(
@@ -275,8 +275,13 @@ class HomePage extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           onTap: () {
             Get.back();
-            if (type != 'about') {
-              Get.toNamed(path);
+            if (path != null) {
+              if (type != 'about') {
+                Get.toNamed(path);
+              }
+            }
+            if (type == 'about') {
+              homeController.onLaunchUrl("https://wa.me/+6287753896137-?text=");
             }
           },
           child: Padding(

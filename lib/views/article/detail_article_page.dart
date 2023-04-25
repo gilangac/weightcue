@@ -99,6 +99,36 @@ class DetailArticlePage extends StatelessWidget {
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w600,
               )),
+          if (data.link != '')
+            GestureDetector(
+              onTap: () => articleController.onLaunchUrl(data.link ?? ''),
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: AppColors.white),
+                margin: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(
+                      Icons.link,
+                      color: AppColors.grey,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text('Buka Berita',
+                        textAlign: TextAlign.justify,
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          color: AppColors.grey,
+                          fontWeight: FontWeight.w500,
+                        )),
+                  ],
+                ),
+              ),
+            ),
           const SizedBox(
             height: 10,
           ),
@@ -118,13 +148,13 @@ class DetailArticlePage extends StatelessWidget {
     Get.bottomSheet(
         SafeArea(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(color: AppColors.lightGrey, width: 35, height: 4),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -142,14 +172,14 @@ class DetailArticlePage extends StatelessWidget {
                         _deleteAction(),
                       ],
                     )),
-                SizedBox(height: 13),
+                const SizedBox(height: 13),
                 _cancelAction()
               ],
             ),
           ),
         ),
         backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         isDismissible: true,
@@ -162,7 +192,7 @@ class DetailArticlePage extends StatelessWidget {
     required String path,
     String? type,
   }) {
-    return Container(
+    return SizedBox(
       width: Get.width,
       child: Material(
         color: Colors.transparent,

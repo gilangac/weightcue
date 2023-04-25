@@ -31,9 +31,7 @@ class DiagnosisController extends GetxController {
           question: data["question"],
         ));
       });
-    }).onError((error, stackTrace) {
-      Get.snackbar("Terjadi Kesalahan", "Periksa koneksi internet anda!");
-    });
+    }).onError((error, stackTrace) {});
 
     List.generate(listQuestion.length, (index) {
       answerGroup.addAll([2.obs]);

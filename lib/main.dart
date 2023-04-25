@@ -9,11 +9,14 @@ import 'package:weightcue_mobile/routes/pages.dart';
 import 'package:weightcue_mobile/services/service_preference.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weightcue_mobile/themes/light_theme.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await PreferenceService.init();
+  initializeDateFormatting('id', null);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
 }
@@ -27,8 +30,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'WeightCue!',
       theme: lightTheme(context),
-      initialRoute: isLogged ? PreferenceService.getTypeUser() == 0 ?
-       AppPages.HOME : AppPages.HOME_AHLI : AppPages.LOGIN,
+      initialRoute: isLogged
+          ? PreferenceService.getTypeUser() == 0
+              ? AppPages.HOME
+              : AppPages.HOME_AHLI
+          : AppPages.LOGIN,
       getPages: AppRoutes.pages,
       defaultTransition: Transition.cupertino,
     );

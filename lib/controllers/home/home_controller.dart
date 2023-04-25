@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:weightcue_mobile/models/user.dart';
 
 class HomeController extends GetxController {
@@ -38,5 +39,22 @@ class HomeController extends GetxController {
     });
 
     isLoading.value = false;
+  }
+
+  
+  Future<void> onLaunchUrl(String url) async {
+    if (!url.contains('http')) {
+      url = 'https://' + url;
+    }
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+        headers: <String, String>{'header_key': 'header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

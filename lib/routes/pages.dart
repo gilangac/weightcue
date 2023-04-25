@@ -3,6 +3,8 @@
 import 'package:get/route_manager.dart';
 import 'package:weightcue_mobile/bindings/firebase_binding.dart';
 import 'package:weightcue_mobile/views/ahli/article/add_article_page.dart';
+import 'package:weightcue_mobile/views/ahli/bmi/riwayat_bmi_page.dart';
+import 'package:weightcue_mobile/views/ahli/diagnosis/riwayat_diagnosis_page.dart';
 import 'package:weightcue_mobile/views/ahli/home_ahli_page.dart';
 import 'package:weightcue_mobile/views/article/article_page.dart';
 import 'package:weightcue_mobile/views/article/detail_article_page.dart';
@@ -25,9 +27,12 @@ class AppPages {
   static const DIAGNOSIS = _Paths.DIAGNOSIS;
   static const RESULT_DIAGNOSIS = _Paths.RESULT_DIAGNOSIS;
   static const NOT_FOUND = _Paths.NOT_FOUND;
+
   //AHLI route
   static const HOME_AHLI = _Paths.HOME_AHLI;
   static const ADD_ARTICLE = _Paths.ADD_ARTICLE;
+  static const RIWAYAT_BMI = _Paths.RIWAYAT_BMI;
+  static const RIWAYAT_DIAGNOSIS = _Paths.RIWAYAT_DIAGNOSIS;
 }
 
 abstract class _Paths {
@@ -41,7 +46,10 @@ abstract class _Paths {
   static const DIAGNOSIS = '/diagnosis';
   static const RESULT_DIAGNOSIS = '/result-diagnosis';
   static const NOT_FOUND = '/404';
+
   //AHLI route
   static const HOME_AHLI = '/home-ahli';
   static const ADD_ARTICLE = '/add-article/';
+  static const RIWAYAT_BMI = '/riwayat-bmi';
+  static const RIWAYAT_DIAGNOSIS = '/riwayat-diagnosis';
 }

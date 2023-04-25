@@ -1,7 +1,9 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls
+// ignore_for_file: avoid_function_literals_in_foreach_calls, deprecated_member_use
+
+import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
 import 'package:weightcue_mobile/helpers/dialog_helper.dart';
 import 'package:weightcue_mobile/models/article_model.dart';
@@ -28,7 +30,10 @@ class ArticleController extends GetxController {
   Future<void> onGetDataArticle() async {
     isLoading.value = true;
     listArticle.isNotEmpty ? listArticle.clear() : null;
-    await article.get().then((QuerySnapshot snapshot) {
+    await article
+        .orderBy("date", descending: true)
+        .get()
+        .then((QuerySnapshot snapshot) {
       snapshot.docs.forEach((data) {
         listArticle.add(ArticleModel(
           idArtikel: data["idArtikel"],
@@ -36,9 +41,11 @@ class ArticleController extends GetxController {
           materi: data["materi"],
           imageUrl: data["imageUrl"],
           date: data["date"],
+          link: data["link"] ?? '',
         ));
       });
     }).onError((error, stackTrace) {
+      log(error.toString());
       Get.snackbar("Terjadi Kesalahan", "Periksa koneksi internet anda!");
     });
 
@@ -71,7 +78,6 @@ class ArticleController extends GetxController {
   }
 
   void onConfirmDelete(String idArticle) {
-    print(idArticle);
     Get.back();
     DialogHelper.showConfirm(
         title: "Hapus Artikel",
@@ -82,5 +88,21 @@ class ArticleController extends GetxController {
           Get.back();
           onDeletePost(idArticle);
         });
+  }
+
+  Future<void> onLaunchUrl(String url) async {
+    if (!url.contains('http')) {
+      url = 'https://' + url;
+    }
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+        headers: <String, String>{'header_key': 'header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

@@ -167,7 +167,7 @@ class HomeAhliPage extends StatelessWidget {
             children: [
               Expanded(
                 child: GestureDetector(
-                    onTap: () => Get.toNamed(AppPages.CALCULATOR_BMI),
+                    onTap: () => Get.toNamed(AppPages.RIWAYAT_BMI),
                     child: _cardMenu("Riwayat\nBMI")),
               ),
               SizedBox(
@@ -245,7 +245,6 @@ class HomeAhliPage extends StatelessWidget {
                         _listAction2(
                             icon: Feather.phone_call,
                             title: "Informasi Selanjutnya",
-                            path: AppPages.HOME,
                             type: "about"),
                       ],
                     )),
@@ -267,7 +266,7 @@ class HomeAhliPage extends StatelessWidget {
   Widget _listAction2({
     IconData? icon,
     required String title,
-    required String path,
+    String? path,
     String? type,
   }) {
     return SizedBox(
@@ -278,8 +277,13 @@ class HomeAhliPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           onTap: () {
             Get.back();
-            if (type != 'about') {
-              Get.toNamed(path);
+            if (path != null) {
+              if (type != 'about') {
+                Get.toNamed(path);
+              }
+            }
+            if (type == 'about') {
+              homeController.onLaunchUrl("https://wa.me/+6287753896137-?text=");
             }
           },
           child: Padding(

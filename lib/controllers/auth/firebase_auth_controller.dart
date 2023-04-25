@@ -72,6 +72,7 @@ class FirebaseAuthController extends GetxController {
       } else {
         await user.doc(auth.currentUser?.uid).set({
           "email": auth.currentUser?.email,
+          "photo": auth.currentUser?.photoURL,
           "idUser": auth.currentUser?.uid,
           "name": auth.currentUser?.displayName,
           "date": DateTime.now(),
