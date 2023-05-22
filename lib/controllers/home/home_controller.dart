@@ -5,10 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:weightcue_mobile/models/user.dart';
+import 'package:weightcue_mobile/services/service_preference.dart';
 
 class HomeController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  CollectionReference article = FirebaseFirestore.instance.collection('users');
+  CollectionReference user = FirebaseFirestore.instance.collection('users');
   FirebaseAuth auth = FirebaseAuth.instance;
 
   UserModel? dataUser;
@@ -21,7 +22,7 @@ class HomeController extends GetxController {
 
   Future<void> onGetDataUser() async {
     isLoading.value = true;
-    await article
+    await user
         .where('idUser', isEqualTo: auth.currentUser?.uid)
         .get()
         .then((QuerySnapshot snapshot) {
@@ -33,6 +34,7 @@ class HomeController extends GetxController {
           type: data["type"],
           date: data["date"],
         );
+        PreferenceService.setTypeUser(data['type']);
       });
     }).onError((error, stackTrace) {
       Get.snackbar("Terjadi Kesalahan", "Periksa koneksi internet anda!");
@@ -41,7 +43,6 @@ class HomeController extends GetxController {
     isLoading.value = false;
   }
 
-  
   Future<void> onLaunchUrl(String url) async {
     if (!url.contains('http')) {
       url = 'https://' + url;

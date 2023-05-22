@@ -11,6 +11,7 @@ import 'package:weightcue_mobile/views/article/detail_article_page.dart';
 import 'package:weightcue_mobile/views/auth/login_page.dart';
 import 'package:weightcue_mobile/views/bmi/calculator_bmi_page.dart';
 import 'package:weightcue_mobile/views/diagnosis/diagnosis_page.dart';
+import 'package:weightcue_mobile/views/diagnosis/diagnosis_room_page.dart';
 import 'package:weightcue_mobile/views/diagnosis/result_diagnosis_page.dart';
 import 'package:weightcue_mobile/views/home/home_page.dart';
 
@@ -25,6 +26,7 @@ class AppPages {
   static const ARTICLE = _Paths.ARTICLE;
   static const DETAIL_ARTICLE = _Paths.DETAIL_ARTICLE;
   static const DIAGNOSIS = _Paths.DIAGNOSIS;
+  static const ROOM_DIAGNOSIS = _Paths.ROOM_DIAGNOSIS;
   static const RESULT_DIAGNOSIS = _Paths.RESULT_DIAGNOSIS;
   static const NOT_FOUND = _Paths.NOT_FOUND;
 
@@ -44,6 +46,7 @@ abstract class _Paths {
   static const ARTICLE = '/article';
   static const DETAIL_ARTICLE = '/detail-article';
   static const DIAGNOSIS = '/diagnosis';
+  static const ROOM_DIAGNOSIS = '/room-diagnosis';
   static const RESULT_DIAGNOSIS = '/result-diagnosis';
   static const NOT_FOUND = '/404';
 

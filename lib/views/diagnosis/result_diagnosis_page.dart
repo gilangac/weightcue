@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weightcue_mobile/constant/colors.dart';
+import 'package:weightcue_mobile/controllers/diagnosis/diagnosis_controller.dart';
 import 'package:weightcue_mobile/widgets/general/app_bar.dart';
 
 class ResultDiagnosisPage extends StatelessWidget {
-  const ResultDiagnosisPage({Key? key}) : super(key: key);
+  ResultDiagnosisPage({Key? key}) : super(key: key);
+  DiagnosisController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class ResultDiagnosisPage extends StatelessWidget {
           children: [
             Lottie.asset('assets/json/chechkup.json', width: Get.width * 0.8),
             Text(
-                "Hasil Diagnosis sesuai dengan gejala yang telah terpilih adalah sebagai berikut :",
+                "Hasil Diagnosis sesuai dengan gejala yang telah anda pilih adalah sebagai berikut :",
                 textAlign: TextAlign.justify,
                 style: GoogleFonts.poppins(
                   fontSize: 16,
@@ -38,8 +40,7 @@ class ResultDiagnosisPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Text(
-                "Anda memiliki kelebihan berat badan yang berpotensi kearah obesitas, segera lakukan diet dengan olahraga secara teratur dan memakan makanan rendah karbohidrat",
+            Text(controller.descriptionResultDiagnosis,
                 textAlign: TextAlign.justify,
                 style: GoogleFonts.poppins(
                   fontSize: 16,

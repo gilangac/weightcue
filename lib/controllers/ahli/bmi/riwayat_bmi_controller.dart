@@ -40,7 +40,6 @@ class RiwayatBmiController extends GetxController {
       });
     }).onError((error, stackTrace) {
       log(error.toString());
-      Get.snackbar("Terjadi Kesalahan", "Periksa koneksi internet anda!");
     });
 
     isLoading.value = false;

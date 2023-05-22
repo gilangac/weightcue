@@ -5,9 +5,10 @@ import 'package:weightcue_mobile/constant/colors.dart';
 import 'package:weightcue_mobile/controllers/diagnosis/diagnosis_controller.dart';
 import 'package:weightcue_mobile/widgets/general/app_bar.dart';
 
-class DiagnosisPage extends StatelessWidget {
-  DiagnosisController diagnosisController = Get.put(DiagnosisController());
-  DiagnosisPage({Key? key}) : super(key: key);
+class DiagnosisRoomPage extends StatelessWidget {
+  DiagnosisController diagnosisController = Get.find();
+  DiagnosisRoomPage({Key? key}) : super(key: key);
+  var isComplete = false.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class DiagnosisPage extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 14, vertical: 14),
                             itemCount:
-                                diagnosisController.listQuestionFilter.length,
+                                diagnosisController.listRoomQuestion.length,
                             itemBuilder: (context, index) {
                               return _cardDiagnosis(index);
                             }),
@@ -68,7 +69,7 @@ class DiagnosisPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(diagnosisController.listQuestionFilter[index].question ?? '',
+          Text(diagnosisController.listRoomQuestion[index].question ?? '',
               textAlign: TextAlign.left,
               style: GoogleFonts.poppins(
                 fontSize: 16,
@@ -95,6 +96,7 @@ class DiagnosisPage extends StatelessWidget {
                       onChanged: (value) {
                         diagnosisController.answerGroup[index].value =
                             int.parse(value.toString());
+                        onValidationAnswer();
                       }),
                   RadioListTile(
                       title: Text("Tidak",
@@ -111,12 +113,20 @@ class DiagnosisPage extends StatelessWidget {
                       onChanged: (value) {
                         diagnosisController.answerGroup[index].value =
                             int.parse(value.toString());
+                        onValidationAnswer();
                       }),
                 ],
               ))
         ],
       ),
     );
+  }
+
+  void onValidationAnswer() {
+    diagnosisController.answerGroup.forEach((value) {
+      isComplete.value = true;
+      if (value.value == 2) isComplete.value = false;
+    });
   }
 
   Widget _btnDiagnosis() {
@@ -131,7 +141,7 @@ class DiagnosisPage extends StatelessWidget {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
                 primary: AppColors.primaryColor, elevation: 0.1),
-            onPressed: diagnosisController.answerGroup[0].value == 2
+            onPressed: !isComplete.value
                 ? null
                 : () {
                     diagnosisController

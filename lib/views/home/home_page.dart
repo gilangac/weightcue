@@ -45,7 +45,11 @@ class HomePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
-        children: [_header(), _illustration(), _menuContent()],
+        children: [
+          _header(),
+          _illustration(),
+          _menuContent(),
+        ],
       ),
     ));
   }
