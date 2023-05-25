@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weightcue_mobile/constant/colors.dart';
 import 'package:weightcue_mobile/controllers/diagnosis/diagnosis_controller.dart';
+import 'package:weightcue_mobile/routes/pages.dart';
 import 'package:weightcue_mobile/widgets/general/app_bar.dart';
 
 class DiagnosisRoomPage extends StatelessWidget {
@@ -12,8 +14,22 @@ class DiagnosisRoomPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    diagnosisController.answerGroupRoom.clear();
+    List.generate(diagnosisController.listRoomQuestion.length, (index) {
+      diagnosisController.answerGroupRoom.addAll([2.obs]);
+    });
+
     return Scaffold(
-      appBar: appBar(title: "Diagnosis Obesitas"),
+      appBar: appBar(
+          title: "Diagnosis Obesitas",
+          enableLeading: true,
+          customLeading: GestureDetector(
+              onTap: () => Get.offAllNamed(AppPages.HOME),
+              child: const Icon(
+                Feather.arrow_left,
+                color: AppColors.white,
+                size: 26,
+              ))),
       body: _body(),
       backgroundColor: AppColors.backgroundColor,
     );
@@ -92,9 +108,10 @@ class DiagnosisRoomPage extends StatelessWidget {
                       value: 1,
                       tileColor: AppColors.primaryColor,
                       activeColor: AppColors.primaryColor,
-                      groupValue: diagnosisController.answerGroup[index].value,
+                      groupValue:
+                          diagnosisController.answerGroupRoom[index].value,
                       onChanged: (value) {
-                        diagnosisController.answerGroup[index].value =
+                        diagnosisController.answerGroupRoom[index].value =
                             int.parse(value.toString());
                         onValidationAnswer();
                       }),
@@ -109,9 +126,10 @@ class DiagnosisRoomPage extends StatelessWidget {
                       value: 0,
                       tileColor: AppColors.primaryColor,
                       activeColor: AppColors.primaryColor,
-                      groupValue: diagnosisController.answerGroup[index].value,
+                      groupValue:
+                          diagnosisController.answerGroupRoom[index].value,
                       onChanged: (value) {
-                        diagnosisController.answerGroup[index].value =
+                        diagnosisController.answerGroupRoom[index].value =
                             int.parse(value.toString());
                         onValidationAnswer();
                       }),
@@ -123,7 +141,7 @@ class DiagnosisRoomPage extends StatelessWidget {
   }
 
   void onValidationAnswer() {
-    diagnosisController.answerGroup.forEach((value) {
+    diagnosisController.answerGroupRoom.forEach((value) {
       isComplete.value = true;
       if (value.value == 2) isComplete.value = false;
     });
@@ -144,10 +162,9 @@ class DiagnosisRoomPage extends StatelessWidget {
             onPressed: !isComplete.value
                 ? null
                 : () {
-                    diagnosisController
-                        .onCheck(diagnosisController.answerGroup[0].value);
-                    // Get.offNamed(AppPages.RESULT_DIAGNOSIS);
-                    // diagnosisController.onSaveAnswer();
+                    diagnosisController.listRoomQuestion.length == 1
+                        ? diagnosisController.onCheckNext()
+                        : diagnosisController.onSaveAnswer();
                   },
             child: Text(
               'Lanjutkan',

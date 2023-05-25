@@ -51,3 +51,9 @@ const String ROOM3 = "ROOM3";
 const String ROOM4 = "ROOM4";
 const String ROOM5 = "ROOM5";
 const String ROOM6 = "ROOM6";
+
+const String APEL = "Apel";
+const String GENOID = "Genoid";
+const String HYPERTROPIC = "Hypertropic";
+const String HYPERPLASTIC = "Hyperplastic";
+const String TIDAK_OBESITAS = "Tidak Obesitas";
