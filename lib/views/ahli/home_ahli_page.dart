@@ -236,13 +236,6 @@ class HomeAhliPage extends StatelessWidget {
               children: [
                 Container(color: AppColors.lightGrey, width: 35, height: 4),
                 SizedBox(height: 30),
-                Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey.shade100),
-                    child: Column(
-                      children: [],
-                    )),
                 SizedBox(height: 13),
                 _logoutAction()
               ],
@@ -256,49 +249,6 @@ class HomeAhliPage extends StatelessWidget {
         isDismissible: true,
         enableDrag: true,
         isScrollControlled: true);
-  }
-
-  Widget _listAction2({
-    IconData? icon,
-    required String title,
-    String? path,
-    String? type,
-  }) {
-    return SizedBox(
-      width: Get.width,
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(10),
-          onTap: () {
-            Get.back();
-            if (path != null) {
-              if (type != 'about') {
-                Get.toNamed(path);
-              }
-            }
-            if (type == 'about') {
-              homeController.onLaunchUrl("https://wa.me/+6287753896137-?text=");
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: ListTile(
-              minLeadingWidth: 0,
-              leading: Icon(icon),
-              title: Text(
-                title,
-                style: GoogleFonts.poppins(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.grey),
-              ),
-              trailing: Icon(Feather.chevron_right),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 
   Widget _logoutAction() {

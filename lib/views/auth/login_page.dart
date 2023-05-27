@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -142,7 +142,7 @@ class LoginPage extends StatelessWidget {
               )
             : ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFF5F5F5), elevation: 0.5),
+                    backgroundColor: Color(0xFFF5F5F5), elevation: 0.5),
                 onPressed: () {
                   firebaseAuthC.signInWithGoogle().then((_) {
                     Get.back();

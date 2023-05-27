@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -167,8 +169,7 @@ class ArticlePage extends StatelessWidget {
     return isAhli
         ? ElevatedButton(
             style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                primary: AppColors.primaryColor,
+                shape: const CircleBorder(), backgroundColor: AppColors.primaryColor,
                 elevation: 0.1),
             onPressed: () {
               Get.toNamed(AppPages.ADD_ARTICLE);

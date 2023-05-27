@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, unnecessary_null_comparison, unused_element
 
 import 'dart:io';
 
@@ -247,14 +247,14 @@ class AddArticlePage extends StatelessWidget {
   }
 
   Widget _btnAddArticle() {
-    return Container(
+    return SizedBox(
       width: Get.width,
       child: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: Get.width * 0.1, vertical: 10),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              primary: AppColors.primaryColor, elevation: 0.1),
+              backgroundColor: AppColors.primaryColor, elevation: 0.1),
           onPressed: () => addArticleC.isEdit
               ? addArticleC.onEditPost()
               : addArticleC.onCreateArticle(),
@@ -308,7 +308,7 @@ class AddArticlePage extends StatelessWidget {
         backgroundColor: Colors.white,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
-                topLeft: const Radius.circular(20),
+                topLeft:  Radius.circular(20),
                 topRight: Radius.circular(20))),
         isDismissible: true,
         enableDrag: true,

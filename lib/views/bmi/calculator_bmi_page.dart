@@ -216,7 +216,7 @@ class CalculatorBmiPage extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: Get.width * 0.1),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            primary: AppColors.primaryColor, elevation: 0.1),
+            backgroundColor: AppColors.primaryColor, elevation: 0.1),
         onPressed: () {
           controller.onCalculateBmi();
         },

@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:weightcue_mobile/helpers/dialog_helper.dart';
 import 'package:weightcue_mobile/models/article_model.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-import 'package:path/path.dart' as Path;
+import 'package:path/path.dart' as path;
 import 'package:weightcue_mobile/services/service_preference.dart';
 
 class ArticleController extends GetxController {
@@ -55,8 +55,8 @@ class ArticleController extends GetxController {
   onDeletePost(String idArticle) async {
     DialogHelper.showLoading();
     article.doc(idArticle).get().then((value) async {
-      var fileUrl = Uri.decodeFull(Path.basename(value['imageUrl'].toString()))
-          .replaceAll(new RegExp(r'(\?alt).*'), '');
+      var fileUrl = Uri.decodeFull(path.basename(value['imageUrl'].toString()))
+          .replaceAll( RegExp(r'(\?alt).*'), '');
       if (value['imageUrl'] != "") {
         final firebase_storage.Reference firebaseStorageRef =
             firebase_storage.FirebaseStorage.instance.ref().child(fileUrl);

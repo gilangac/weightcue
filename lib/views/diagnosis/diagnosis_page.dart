@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,7 +49,7 @@ class DiagnosisPage extends StatelessWidget {
   }
 
   Widget _cardDiagnosis(int index) {
-    Rx<int> answer = 2.obs;
+    
     return Container(
       width: Get.width,
       margin: const EdgeInsets.only(bottom: 10),
@@ -132,7 +134,7 @@ class DiagnosisPage extends StatelessWidget {
           width: Get.width,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-                primary: AppColors.primaryColor, elevation: 0.1),
+                backgroundColor: AppColors.primaryColor, elevation: 0.1),
             onPressed: diagnosisController.answerGroup[0].value == 2
                 ? null
                 : () {

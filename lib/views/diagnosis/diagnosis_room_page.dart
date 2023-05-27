@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, avoid_function_literals_in_foreach_calls
+
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
@@ -64,7 +66,7 @@ class DiagnosisRoomPage extends StatelessWidget {
   }
 
   Widget _cardDiagnosis(int index) {
-    Rx<int> answer = 2.obs;
+    
     return Container(
       width: Get.width,
       margin: const EdgeInsets.only(bottom: 10),
@@ -160,7 +162,7 @@ class DiagnosisRoomPage extends StatelessWidget {
           width: Get.width,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-                primary: AppColors.primaryColor, elevation: 0.1),
+                backgroundColor: AppColors.primaryColor, elevation: 0.1),
             onPressed: !isComplete.value
                 ? null
                 : () {

@@ -8,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:weightcue_mobile/constant/colors.dart';
 import 'package:weightcue_mobile/controllers/ahli/bmi/riwayat_bmi_controller.dart';
 import 'package:weightcue_mobile/models/riwayat_bmi_model.dart';
-import 'package:weightcue_mobile/routes/pages.dart';
 import 'package:weightcue_mobile/widgets/general/app_bar.dart';
 import 'package:weightcue_mobile/widgets/general/circle_avatar.dart';
 

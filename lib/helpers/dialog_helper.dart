@@ -147,7 +147,7 @@ class DialogHelper {
                         Expanded(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.white,
+                              backgroundColor: Colors.white,
                               padding: EdgeInsets.symmetric(
                                 vertical: 10,
                               ),
@@ -170,7 +170,7 @@ class DialogHelper {
                         Expanded(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: Color(0xFF5BBFFA),
+                                backgroundColor: Color(0xFF5BBFFA),
                                 padding: EdgeInsets.symmetric(
                                   vertical: 10,
                                 ),
@@ -192,7 +192,7 @@ class DialogHelper {
                         Expanded(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                backgroundColor: Colors.white,
                                 padding: EdgeInsets.only(top: 10, bottom: 10),
                                 shape: RoundedRectangleBorder(
                                     side: BorderSide(
@@ -214,7 +214,7 @@ class DialogHelper {
                         Expanded(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: AppColors.primaryColor,
+                                backgroundColor: AppColors.primaryColor,
                                 padding: EdgeInsets.only(top: 10, bottom: 10),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12))),
