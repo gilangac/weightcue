@@ -244,8 +244,8 @@ class HomePage extends StatelessWidget {
                     child: Column(
                       children: [
                         _listAction2(
-                            icon: Feather.phone_call,
-                            title: "Informasi Selanjutnya",
+                            icon: Icons.whatsapp_rounded,
+                            title: "Chat dengan ahli",
                             path: AppPages.HOME,
                             type: "about"),
                       ],
@@ -285,14 +285,23 @@ class HomePage extends StatelessWidget {
               }
             }
             if (type == 'about') {
-              homeController.onLaunchUrl("https://wa.me/+6287753896137-?text=");
+              homeController.onLaunchUrl("https://wa.me/+6285231169020?text=");
             }
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: ListTile(
               minLeadingWidth: 0,
-              leading: Icon(icon),
+              leading: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: AppColors.green),
+                padding: EdgeInsets.all(8),
+                child: Icon(
+                  icon,
+                  color: AppColors.white,
+                ),
+              ),
               title: Text(
                 title,
                 style: GoogleFonts.poppins(

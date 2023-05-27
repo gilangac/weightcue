@@ -6,6 +6,7 @@ import 'package:weightcue_mobile/constant/colors.dart';
 import 'package:weightcue_mobile/controllers/article/article_controller.dart';
 import 'package:weightcue_mobile/models/article_model.dart';
 import 'package:weightcue_mobile/routes/pages.dart';
+import 'package:weightcue_mobile/services/service_preference.dart';
 import 'package:weightcue_mobile/widgets/general/app_bar.dart';
 
 class ArticlePage extends StatelessWidget {
@@ -161,17 +162,21 @@ class ArticlePage extends StatelessWidget {
   }
 
   Widget _fab() {
-    return ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            shape: const CircleBorder(),
-            primary: AppColors.primaryColor,
-            elevation: 0.1),
-        onPressed: () {
-          Get.toNamed(AppPages.ADD_ARTICLE);
-        },
-        child: const Padding(
-          padding: EdgeInsets.all(4.0),
-          child: Icon(Icons.add),
-        ));
+    bool isAhli = PreferenceService.getTypeUser() == 1;
+
+    return isAhli
+        ? ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(),
+                primary: AppColors.primaryColor,
+                elevation: 0.1),
+            onPressed: () {
+              Get.toNamed(AppPages.ADD_ARTICLE);
+            },
+            child: const Padding(
+              padding: EdgeInsets.all(4.0),
+              child: Icon(Icons.add),
+            ))
+        : const SizedBox();
   }
 }

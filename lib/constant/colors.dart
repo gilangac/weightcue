@@ -9,7 +9,7 @@ class AppColors {
   static const accentBoxColor = Color(0xFFB79FD4);
 
   // multipurpose colors
-  static const green = Color(0xFF57D28A);
+  static const green = Color(0xFF1BD741);
   static const white = Color(0xFFFFFFFF);
   static const blue = Color(0xFF5BBFFA);
   static const black = Color(0xFF18172B);

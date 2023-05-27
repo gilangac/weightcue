@@ -93,6 +93,7 @@ class DiagnosisPage extends StatelessWidget {
                       activeColor: AppColors.primaryColor,
                       groupValue: diagnosisController.answerGroup[index].value,
                       onChanged: (value) {
+                        print(diagnosisController.mapQuestion);
                         diagnosisController.answerGroup[index].value =
                             int.parse(value.toString());
                       }),
@@ -109,6 +110,7 @@ class DiagnosisPage extends StatelessWidget {
                       activeColor: AppColors.primaryColor,
                       groupValue: diagnosisController.answerGroup[index].value,
                       onChanged: (value) {
+                        print(diagnosisController.mapQuestion);
                         diagnosisController.answerGroup[index].value =
                             int.parse(value.toString());
                       }),

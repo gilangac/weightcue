@@ -1,8 +1,3 @@
-// ignore_for_file: must_be_immutable
-
-import 'dart:convert';
-
-import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,55 +5,112 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:weightcue_mobile/constant/colors.dart';
 import 'package:weightcue_mobile/controllers/ahli/diagnosis/riwayat_diagnosis_controller.dart';
 import 'package:weightcue_mobile/models/riwayat_diagnosis_model.dart';
-import 'package:weightcue_mobile/routes/pages.dart';
+import 'package:intl/intl.dart';
 import 'package:weightcue_mobile/widgets/general/app_bar.dart';
 import 'package:weightcue_mobile/widgets/general/circle_avatar.dart';
 
-class RiwayatDiagnosisPage extends StatelessWidget {
-  RiwayatDiagnosisController controller = Get.put(RiwayatDiagnosisController());
-  RiwayatDiagnosisPage({Key? key}) : super(key: key);
+class DetailRiwayatDiagnosisPage extends StatelessWidget {
+  RiwayatDiagnosisController controller = Get.find();
+  DetailRiwayatDiagnosisPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(
-        title: "Riwayat Diagnosis",
+        title: "Detail Diagnosis",
       ),
       body: _body(),
       backgroundColor: AppColors.backgroundColor,
     );
+    ;
   }
 
   Widget _body() {
-    return Obx(() => SizedBox(
-          height: Get.height,
-          width: Get.width,
-          child: controller.isLoading.value
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : ListView.builder(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-                  itemCount: controller.listDiagnosis.length,
-                  itemBuilder: (context, index) {
-                    return _cardArticle(index);
-                  }),
-        ));
+    return SafeArea(
+      child: SizedBox(
+        height: Get.height,
+        child: Column(
+          children: [
+            _cardArticle(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 14),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text("Deskripsi",
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            color: AppColors.primaryColor,
+                            fontWeight: FontWeight.w600,
+                          )),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                width: 4, color: AppColors.backgroundColor),
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.1),
+                                spreadRadius: 1,
+                                blurRadius: 1,
+                                offset: const Offset(
+                                    0, 1), // changes position of shadow
+                              ),
+                            ],
+                            color: AppColors.white),
+                        padding: const EdgeInsets.all(18),
+                        child: Text(controller.descriptionResultDiagnosis,
+                            textAlign: TextAlign.justify,
+                            style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w400,
+                            )),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text("Jawaban Pertanyaan",
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            color: AppColors.primaryColor,
+                            fontWeight: FontWeight.w600,
+                          )),
+                      ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          itemCount: controller.listDetail.length,
+                          itemBuilder: (context, index) {
+                            return _cardDiagnosis(index);
+                          }),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 
-  Widget _cardArticle(int index) {
-    RiwayatDiagnosisModel data = controller.listDiagnosis[index];
-    return Stack(
-      children: [
-        GestureDetector(
-          onTap: () async {
-            controller.onGetDetail(data);
-            Get.toNamed(AppPages.DETAIL_RIWAYAT_DIAGNOSIS, arguments: data);
-          },
-          child: Container(
+  Widget _cardArticle() {
+    RiwayatDiagnosisModel data = Get.arguments;
+    return Padding(
+      padding: const EdgeInsets.all(14.0),
+      child: Stack(
+        children: [
+          Container(
             width: Get.width,
-            margin: const EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
                 border: Border.all(width: 4, color: AppColors.backgroundColor),
                 borderRadius: BorderRadius.circular(12),
@@ -163,19 +215,77 @@ class RiwayatDiagnosisPage extends StatelessWidget {
                   }
                 }),
           ),
-        ),
-        Positioned(
-            top: 10,
-            right: 10,
-            child: GestureDetector(
-              onTap: () => controller.onConfirmDelete(data.idDiagnosis ?? ''),
-              child: Icon(
-                Icons.delete,
-                size: 20,
-                color: Colors.red.shade400,
+          Positioned(
+              top: 10,
+              right: 10,
+              child: GestureDetector(
+                onTap: () async {
+                  await controller.onConfirmDelete(data.idDiagnosis ?? '',
+                      isDetail: true);
+                },
+                child: Icon(
+                  Icons.delete,
+                  size: 20,
+                  color: Colors.red.shade400,
+                ),
+              ))
+        ],
+      ),
+    );
+  }
+
+  Widget _cardDiagnosis(int index) {
+    return Container(
+      width: Get.width,
+      margin: const EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration(
+          border: Border.all(width: 4, color: AppColors.backgroundColor),
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 1,
+              blurRadius: 1,
+              offset: const Offset(0, 1), // changes position of shadow
+            ),
+          ],
+          color: AppColors.white),
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(controller.listQuestionFilter[index].question ?? '',
+              textAlign: TextAlign.left,
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.w400,
+              )),
+          const SizedBox(
+            height: 18,
+          ),
+          Row(
+            children: [
+              Text("Jawaban : ",
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: AppColors.primaryColor,
+                    fontWeight: FontWeight.w400,
+                  )),
+              const SizedBox(
+                width: 4,
               ),
-            ))
-      ],
+              Text(controller.rawResult[index]['answer'] == 0 ? 'Tidak' : 'Iya',
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: AppColors.primaryColor,
+                    fontWeight: FontWeight.w600,
+                  )),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

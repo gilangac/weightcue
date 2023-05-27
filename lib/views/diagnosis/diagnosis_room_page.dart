@@ -143,7 +143,9 @@ class DiagnosisRoomPage extends StatelessWidget {
   void onValidationAnswer() {
     diagnosisController.answerGroupRoom.forEach((value) {
       isComplete.value = true;
-      if (value.value == 2) isComplete.value = false;
+      if (diagnosisController.answerGroupRoom.contains(2.obs)) {
+        isComplete.value = false;
+      }
     });
   }
 
@@ -162,9 +164,12 @@ class DiagnosisRoomPage extends StatelessWidget {
             onPressed: !isComplete.value
                 ? null
                 : () {
-                    diagnosisController.listRoomQuestion.length == 1
-                        ? diagnosisController.onCheckNext()
-                        : diagnosisController.onSaveAnswer();
+                    onValidationAnswer();
+                    if (isComplete.value) {
+                      diagnosisController.listRoomQuestion.length == 1
+                          ? diagnosisController.onCheckNext()
+                          : diagnosisController.onSaveAnswer();
+                    }
                   },
             child: Text(
               'Lanjutkan',

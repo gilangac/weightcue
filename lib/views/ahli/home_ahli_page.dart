@@ -147,7 +147,7 @@ class HomeAhliPage extends StatelessWidget {
             children: [
               Expanded(
                 child: GestureDetector(
-                    onTap: () => Get.toNamed(AppPages.DIAGNOSIS),
+                    onTap: () => Get.toNamed(AppPages.RIWAYAT_DIAGNOSIS),
                     child: _cardMenu("Riwayat \nDiagnosis")),
               ),
               SizedBox(
@@ -241,12 +241,7 @@ class HomeAhliPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey.shade100),
                     child: Column(
-                      children: [
-                        _listAction2(
-                            icon: Feather.phone_call,
-                            title: "Informasi Selanjutnya",
-                            type: "about"),
-                      ],
+                      children: [],
                     )),
                 SizedBox(height: 13),
                 _logoutAction()

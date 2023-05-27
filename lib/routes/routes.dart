@@ -19,6 +19,9 @@ class AppRoutes {
     GetPage(name: _Paths.RIWAYAT_BMI, page: () => RiwayatBmiPage()),
     GetPage(name: _Paths.RIWAYAT_DIAGNOSIS, page: () => RiwayatDiagnosisPage()),
     GetPage(
+        name: _Paths.DETAIL_RIWAYAT_DIAGNOSIS,
+        page: () => DetailRiwayatDiagnosisPage()),
+    GetPage(
         name: _Paths.LOGIN,
         page: () => const LoginPage(),
         binding: FirebaseBinding()),
