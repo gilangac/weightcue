@@ -37,16 +37,23 @@ class EditDiagnosisPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                        child: Text('Gejala Obesitas Tipe Apel',
+                      Container(
+                        width: Get.width,
+                        color: AppColors.primaryColor.withOpacity(0.6),
+                        margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                        padding: const EdgeInsets.all(10),
+                        child: Center(
+                          child: Text(
+                            'Gejala Obesitas Tipe Apel',
                             textAlign: TextAlign.left,
                             style: GoogleFonts.poppins(
                               fontSize: 16,
                               height: 1.5,
-                              color: AppColors.primaryColor,
+                              color: AppColors.white,
                               fontWeight: FontWeight.w600,
-                            )),
+                            ),
+                          ),
+                        ),
                       ),
                       ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
@@ -57,16 +64,21 @@ class EditDiagnosisPage extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return _cardArticle(index);
                           }),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                        child: Text('Gejala Obesitas Tipe Genoid',
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              height: 1.5,
-                              color: AppColors.primaryColor,
-                              fontWeight: FontWeight.w600,
-                            )),
+                      Container(
+                        width: Get.width,
+                        color: AppColors.primaryColor.withOpacity(0.6),
+                        margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                        padding: const EdgeInsets.all(10),
+                        child: Center(
+                          child: Text('Gejala Obesitas Tipe Genoid',
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                height: 1.5,
+                                color: AppColors.white,
+                                fontWeight: FontWeight.w600,
+                              )),
+                        ),
                       ),
                       ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
@@ -77,16 +89,21 @@ class EditDiagnosisPage extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return _cardArticle(index);
                           }),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                        child: Text('Gejala Obesitas Tipe Hypertropic',
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              height: 1.5,
-                              color: AppColors.primaryColor,
-                              fontWeight: FontWeight.w600,
-                            )),
+                      Container(
+                        width: Get.width,
+                        color: AppColors.primaryColor.withOpacity(0.6),
+                        margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                        padding: const EdgeInsets.all(10),
+                        child: Center(
+                          child: Text('Gejala Obesitas Tipe Hypertropic',
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                height: 1.5,
+                                color: AppColors.white,
+                                fontWeight: FontWeight.w600,
+                              )),
+                        ),
                       ),
                       ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
@@ -97,16 +114,21 @@ class EditDiagnosisPage extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return _cardArticle(index);
                           }),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                        child: Text('Gejala Obesitas Tipe Hyperplastic',
-                            textAlign: TextAlign.left,
-                            style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              height: 1.5,
-                              color: AppColors.primaryColor,
-                              fontWeight: FontWeight.w600,
-                            )),
+                      Container(
+                        width: Get.width,
+                        color: AppColors.primaryColor.withOpacity(0.6),
+                        margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                        padding: const EdgeInsets.all(10),
+                        child: Center(
+                          child: Text('Gejala Obesitas Tipe Hyperplastic',
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                height: 1.5,
+                                color: AppColors.white,
+                                fontWeight: FontWeight.w600,
+                              )),
+                        ),
                       ),
                       ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
