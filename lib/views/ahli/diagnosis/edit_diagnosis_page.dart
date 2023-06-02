@@ -32,13 +32,94 @@ class EditDiagnosisPage extends StatelessWidget {
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
-              : ListView.builder(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-                  itemCount: controller.listQuestion.length,
-                  itemBuilder: (context, index) {
-                    return _cardArticle(index);
-                  }),
+              : SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                        child: Text('Gejala Obesitas Tipe Apel',
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              height: 1.5,
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w600,
+                            )),
+                      ),
+                      ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14, vertical: 14),
+                          itemCount: controller.listApel.length,
+                          itemBuilder: (context, index) {
+                            return _cardArticle(index);
+                          }),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                        child: Text('Gejala Obesitas Tipe Genoid',
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              height: 1.5,
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w600,
+                            )),
+                      ),
+                      ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14, vertical: 14),
+                          itemCount: controller.listGenoid.length,
+                          itemBuilder: (context, index) {
+                            return _cardArticle(index);
+                          }),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                        child: Text('Gejala Obesitas Tipe Hypertropic',
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              height: 1.5,
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w600,
+                            )),
+                      ),
+                      ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14, vertical: 14),
+                          itemCount: controller.listHypertropic.length,
+                          itemBuilder: (context, index) {
+                            return _cardArticle(index);
+                          }),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                        child: Text('Gejala Obesitas Tipe Hyperplastic',
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              height: 1.5,
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w600,
+                            )),
+                      ),
+                      ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14, vertical: 14),
+                          itemCount: controller.listHyperplastic.length,
+                          itemBuilder: (context, index) {
+                            return _cardArticle(index);
+                          }),
+                    ],
+                  ),
+                ),
         ));
   }
 

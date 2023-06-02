@@ -176,7 +176,7 @@ class HomeAhliPage extends StatelessWidget {
               Expanded(
                 child: GestureDetector(
                     onTap: () => Get.toNamed(AppPages.EDIT_DIAGNOSIS),
-                    child: _cardMenu("Edit Gejala \nDiagnosa")),
+                    child: _cardMenu("Edit Gejala \nDiagnosis")),
               )
             ],
           ),
