@@ -175,13 +175,19 @@ class HomeAhliPage extends StatelessWidget {
               ),
               Expanded(
                 child: GestureDetector(
-                    onTap: () {
-                      _bottomSheetContentProfile();
-                    },
-                    child: _cardMenu("Lainnya")),
+                    onTap: () => Get.toNamed(AppPages.EDIT_DIAGNOSIS),
+                    child: _cardMenu("Edit Gejala \nDiagnosa")),
               )
             ],
           ),
+          SizedBox(
+            height: 12,
+          ),
+          GestureDetector(
+              onTap: () {
+                _bottomSheetContentProfile();
+              },
+              child: _cardMenu("Lainnya"))
         ],
       ),
     );
@@ -194,7 +200,9 @@ class HomeAhliPage extends StatelessWidget {
           height: 90,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: AppColors.primaryColor),
+              color: title == 'Lainnya'
+                  ? AppColors.primaryColor.withOpacity(0.13)
+                  : AppColors.primaryColor),
         ),
         Positioned(
             top: 5,
@@ -216,7 +224,9 @@ class HomeAhliPage extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 18,
                   height: 1.5,
-                  color: Colors.white,
+                  color: title == 'Lainnya'
+                      ? AppColors.primaryColor
+                      : Colors.white,
                   fontWeight: FontWeight.w700,
                 )),
           ),

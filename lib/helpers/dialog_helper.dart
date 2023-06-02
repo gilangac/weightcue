@@ -253,12 +253,13 @@ class DialogHelper {
                         Lottie.asset('assets/json/chechkup.json'),
                         Text(
                           title ?? '',
-                          style: GoogleFonts.poppins(fontSize: 28),
+                          style: GoogleFonts.poppins(fontSize: 18),
                           textAlign: TextAlign.center,
                         ),
                         Text(
                           description ?? '',
-                          style: GoogleFonts.poppins(fontSize: 18),
+                          style: GoogleFonts.poppins(
+                              fontSize: 22, fontWeight: FontWeight.w600),
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 20),

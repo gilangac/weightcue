@@ -43,6 +43,8 @@ Widget formInput(
         enabled: enabled,
         onTap: ontap,
         maxLines: maxLines ?? 1,
+        style: GoogleFonts.poppins(
+            fontSize: 14, color: enabled ? AppColors.black : AppColors.grey),
         inputFormatters: inputFormater ?? [],
         decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(

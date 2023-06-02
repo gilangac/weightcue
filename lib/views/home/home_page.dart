@@ -177,12 +177,20 @@ class HomePage extends StatelessWidget {
               Expanded(
                 child: GestureDetector(
                     onTap: () {
-                      _bottomSheetContentProfile();
+                      Get.toNamed(AppPages.RIWAYAT_DIAGNOSIS_USER);
                     },
-                    child: _cardMenu("Lainnya")),
+                    child: _cardMenu("Riwayat \nDiagnosis")),
               )
             ],
           ),
+          SizedBox(
+            height: 12,
+          ),
+          GestureDetector(
+              onTap: () {
+                _bottomSheetContentProfile();
+              },
+              child: _cardMenu("Lainnya"))
         ],
       ),
     );
@@ -195,7 +203,9 @@ class HomePage extends StatelessWidget {
           height: 90,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              color: AppColors.primaryColor),
+              color: title == 'Lainnya'
+                  ? AppColors.primaryColor.withOpacity(0.13)
+                  : AppColors.primaryColor),
         ),
         Positioned(
             top: 5,
@@ -217,7 +227,9 @@ class HomePage extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 18,
                   height: 1.5,
-                  color: Colors.white,
+                  color: title == 'Lainnya'
+                      ? AppColors.primaryColor
+                      : Colors.white,
                   fontWeight: FontWeight.w700,
                 )),
           ),
@@ -244,7 +256,7 @@ class HomePage extends StatelessWidget {
                     child: Column(
                       children: [
                         _listAction2(
-                            icon: Icons.whatsapp_rounded,
+                            icon: Icons.whatsapp,
                             title: "Chat dengan ahli",
                             path: AppPages.HOME,
                             type: "about"),

@@ -56,7 +56,7 @@ class ArticleController extends GetxController {
     DialogHelper.showLoading();
     article.doc(idArticle).get().then((value) async {
       var fileUrl = Uri.decodeFull(path.basename(value['imageUrl'].toString()))
-          .replaceAll( RegExp(r'(\?alt).*'), '');
+          .replaceAll(RegExp(r'(\?alt).*'), '');
       if (value['imageUrl'] != "") {
         final firebase_storage.Reference firebaseStorageRef =
             firebase_storage.FirebaseStorage.instance.ref().child(fileUrl);

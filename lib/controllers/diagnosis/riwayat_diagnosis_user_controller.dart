@@ -4,13 +4,15 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:weightcue_mobile/constant/code_diagnosis.dart';
 import 'package:weightcue_mobile/helpers/dialog_helper.dart';
 import 'package:weightcue_mobile/models/question_model.dart';
 import 'package:weightcue_mobile/models/riwayat_diagnosis_model.dart';
 
-class RiwayatDiagnosisController extends GetxController {
+class RiwayatDiagnosisUserController extends GetxController {
+  FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   CollectionReference riwayatDiagnosis =
       FirebaseFirestore.instance.collection('riwayat_diagnosis');
@@ -74,7 +76,7 @@ class RiwayatDiagnosisController extends GetxController {
     isLoading.value = true;
     listDiagnosis.isNotEmpty ? listDiagnosis.clear() : null;
     await riwayatDiagnosis
-        .orderBy("date", descending: true)
+        .where('idUser', isEqualTo: auth.currentUser?.uid)
         .get()
         .then((QuerySnapshot snapshot) {
       snapshot.docs.forEach((data) {
@@ -85,6 +87,9 @@ class RiwayatDiagnosisController extends GetxController {
           result: data["result"],
           date: data["date"],
         ));
+        listDiagnosis.sort((a, b) {
+          return b.date!.compareTo(a.date!);
+        });
       });
     }).onError((error, stackTrace) {
       log(error.toString());
@@ -129,7 +134,7 @@ class RiwayatDiagnosisController extends GetxController {
       case APEL:
         descriptionResultDiagnosis =
             '''Obesitas tipe apel, juga dikenal sebagai obesitas sentral atau obesitas abdominal, mengacu pada penumpukan lemak terutama di area perut dan dada, menciptakan bentuk tubuh yang mirip dengan apel. Ini berbeda dengan obesitas tipe pir atau obesitas perifer, di mana lemak lebih terkonsentrasi di area pinggul, paha, dan pantat.
-                \n*>Penyebab Obesitas Tipe Apel:
+\n*>Penyebab Obesitas Tipe Apel:
 1.  Faktor Genetik: Beberapa orang memiliki kecenderungan genetik untuk mengembangkan obesitas tipe apel.
 2.  Pola Makan Tidak Sehat: Konsumsi makanan tinggi lemak jenuh, gula, dan makanan olahan dapat menyebabkan peningkatan berat badan dan obesitas tipe apel.
 3.  Kurangnya Aktivitas Fisik: Gaya hidup yang kurang aktif dan kebiasaan duduk yang berkepanjangan dapat berkontribusi pada penumpukan lemak di area perut.

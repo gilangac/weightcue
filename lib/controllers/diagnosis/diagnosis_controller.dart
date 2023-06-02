@@ -628,23 +628,69 @@ class DiagnosisController extends GetxController {
     switch (resultDiagnosis) {
       case TIDAK_OBESITAS:
         descriptionResultDiagnosis =
-            'Anda saat ini tidak mengalami Obesitas, Sebaiknya anda tetap menjaga berat badan ideal agar terhindar dari berbagai macam penyakit degeneratif yang berbahaya';
+            'Sebaiknya anda tetap menjaga berat badan ideal agar terhindar dari berbagai macam penyakit degeneratif yang berbahaya';
         break;
       case APEL:
         descriptionResultDiagnosis =
-            'Anda mengalami obesitas tipe Apel. Jika Anda khawatir tentang berat badan atau risiko kesehatan Anda, sebaiknya berkonsultasi dengan dokter atau ahli gizi untuk mendapatkan saran yang tepat.';
+            '''Obesitas tipe apel, juga dikenal sebagai obesitas sentral atau obesitas abdominal, mengacu pada penumpukan lemak terutama di area perut dan dada, menciptakan bentuk tubuh yang mirip dengan apel. Ini berbeda dengan obesitas tipe pir atau obesitas perifer, di mana lemak lebih terkonsentrasi di area pinggul, paha, dan pantat.
+                \n*>Penyebab Obesitas Tipe Apel:
+1.  Faktor Genetik: Beberapa orang memiliki kecenderungan genetik untuk mengembangkan obesitas tipe apel.
+2.  Pola Makan Tidak Sehat: Konsumsi makanan tinggi lemak jenuh, gula, dan makanan olahan dapat menyebabkan peningkatan berat badan dan obesitas tipe apel.
+3.  Kurangnya Aktivitas Fisik: Gaya hidup yang kurang aktif dan kebiasaan duduk yang berkepanjangan dapat berkontribusi pada penumpukan lemak di area perut.
+4.  Stres: Stres kronis dapat menyebabkan pelepasan hormon kortisol yang dapat memengaruhi penimbunan lemak di area perut.
+\n*>Solusi untuk Obesitas Tipe Apel:
+1.  Pola Makan Sehat: Fokus pada pola makan yang seimbang dengan makanan yang rendah lemak jenuh, gula tambahan, dan tinggi serat. Sertakan banyak buah, sayuran, biji-bijian, dan protein rendah lemak dalam diet Anda.
+2.  Aktivitas Fisik: Lakukan latihan aerobik seperti berjalan cepat, berlari, bersepeda, atau berenang secara teratur untuk membantu membakar lemak tubuh. Latihan kekuatan juga penting untuk membantu memperkuat otot dan meningkatkan metabolisme.
+3.  Mengelola Stres: Temukan cara-cara yang efektif untuk mengurangi stres seperti meditasi, yoga, atau kegiatan yang menenangkan pikiran Anda. Ini dapat membantu mengurangi produksi kortisol dan mengurangi keinginan makan berlebihan.
+4.  Tidur yang Cukup: Pastikan Anda mendapatkan tidur yang cukup setiap malam. Kurang tidur dapat mengganggu keseimbangan hormon dan berkontribusi pada peningkatan berat badan.
+5.  Hindari Konsumsi Alkohol Berlebihan: Alkohol dapat menyebabkan penimbunan lemak di area perut. Batasi konsumsi alkohol Anda atau hindari sepenuhnya jika memungkinkan.
+\nPenting untuk dicatat bahwa setiap upaya untuk mengatasi obesitas harus dilakukan dengan bimbingan medis dan disesuaikan dengan kebutuhan individu. Konsultasikan dengan dokter atau ahli gizi untuk mendapatkan rekomendasi yang tepat sesuai dengan kondisi anda. ''';
         break;
       case GENOID:
         descriptionResultDiagnosis =
-            'Anda mengalami obesitas tipe Genoid. Jika Anda khawatir tentang berat badan atau risiko kesehatan Anda, sebaiknya berkonsultasi dengan dokter atau ahli gizi untuk mendapatkan saran yang tepat.';
+            '''Pada obesitas tipe Genoid, lemak cenderung menumpuk di sekitar pinggul, paha, dan bokong. lemak pada bagian bawah tubuh dapat meningkatkan risiko gangguan muskuloskeletal, seperti osteoartritis pada pinggul dan lutut.
+\n*>Penyebab obesitas tipe genoid
+1.  Genetik: Faktor genetik dapat memainkan peran penting dalam kecenderungan seseorang untuk mengembangkan obesitas tipe pir. Ada bukti bahwa kecenderungan genetik dapat mempengaruhi distribusi lemak tubuh pada area pinggul, paha, dan bokong.
+2.  Hormonal: Hormon seperti estrogen berperan dalam pengaturan penyebaran lemak tubuh pada wanita. Tingginya tingkat estrogen dalam tubuh wanita cenderung mempengaruhi akumulasi lemak di area pinggul, paha, dan bokong.
+3.  Metabolisme dan resistensi insulin: Ketidakseimbangan metabolisme dan resistensi insulin juga dapat mempengaruhi penumpukan lemak pada area pinggul, paha, dan bokong. Resistensi insulin terkait dengan ketidakmampuan tubuh menggunakan insulin secara efisien, yang dapat memicu peningkatan produksi dan penumpukan lemak.
+4.  Pola makan: Pola makan yang tidak seimbang, khususnya konsumsi makanan yang kaya lemak dan kalori tinggi, dapat berkontribusi pada perkembangan obesitas tipe pir. Mengonsumsi makanan olahan, makanan cepat saji, dan minuman manis secara berlebihan dapat menyebabkan peningkatan asupan kalori dan akumulasi lemak pada area pinggul, paha, dan bokong.
+5.  Kurangnya aktivitas fisik: Gaya hidup yang tidak aktif atau kurangnya aktivitas fisik juga merupakan faktor yang berkontribusi pada obesitas tipe pir. Kurangnya latihan kardiovaskular dan kurangnya latihan yang melibatkan otot-otot pada area pinggul dan paha dapat menyebabkan penurunan kekuatan otot dan akumulasi lemak.
+6.  Stres dan faktor psikologis: Stres kronis dan faktor psikologis tertentu juga dapat memengaruhi perkembangan obesitas tipe pir. Beberapa orang cenderung mengatasi stres dengan mengonsumsi makanan yang tidak sehat atau dalam jumlah yang berlebihan, yang dapat berkontribusi pada peningkatan berat badan dan penumpukan lemak pada area pinggul, paha, dan bokong.
+\n*>Solusi untuk obesitas tipe genoid
+1.  Diet Seimbang: Mengadopsi pola makan seimbang dengan memperhatikan asupan nutrisi yang tepat sangat penting. Fokus pada makanan tinggi serat, seperti buah-buahan, sayuran, biji-bijian, dan protein rendah lemak, seperti daging tanpa lemak, ikan, dan kacang-kacangan. Hindari makanan olahan, makanan cepat saji, makanan manis, dan makanan tinggi lemak jenuh.
+2.  Kontrol Porsi Makan: Mengendalikan porsi makan juga penting dalam manajemen berat badan. Gunakan piring yang lebih kecil dan hindari makan berlebihan. Mengonsumsi makanan dalam porsi yang lebih kecil namun lebih sering dapat membantu menjaga asupan kalori yang seimbang.
+3.  Olahraga Teratur: Aktivitas fisik adalah bagian penting dalam mengurangi lemak tubuh. Lakukan olahraga aerobik seperti berjalan kaki, berlari, bersepeda, atau berenang secara teratur untuk membakar kalori dan meningkatkan metabolisme. Latihan kekuatan juga dapat membantu membangun otot dan meningkatkan pembakaran lemak. Fokus pada latihan yang melibatkan area perut dan dada untuk membantu mengurangi penumpukan lemak di area tersebut.
+4.  Pengelolaan Stres: Stres kronis dapat mempengaruhi berat badan dan pola makan. Temukan cara-cara yang efektif untuk mengelola stres, seperti meditasi, yoga, olahraga, atau kegiatan relaksasi lainnya. Hindari makan berlebihan sebagai respons terhadap stres.
+5.  Tidur yang Cukup: Tidur yang cukup dan berkualitas sangat penting untuk keseimbangan hormon dan manajemen berat badan. Usahakan untuk mendapatkan 7-8 jam tidur setiap malam.
+6.  Konsultasikan dengan Profesional Kesehatan: Jika Anda mengalami kesulitan dalam mengelola obesitas tipe genoid, konsultasikan dengan dokter atau ahli gizi. Mereka dapat memberikan panduan yang lebih spesifik sesuai dengan kebutuhan dan kondisi Anda. ''';
         break;
       case HYPERTROPIC:
         descriptionResultDiagnosis =
-            'Anda mengalami obesitas tipe Hypertropic. Jika Anda khawatir tentang berat badan atau risiko kesehatan Anda, sebaiknya berkonsultasi dengan dokter atau ahli gizi untuk mendapatkan saran yang tepat.';
+            '''Obesitas hypertropic, juga dikenal sebagai obesitas adiposit hypertropic, adalah bentuk obesitas di mana sel-sel lemak (adiposit) dalam tubuh membesar karena penumpukan lemak yang berlebihan.
+\n*>Penyebab Obesitas Hypertropic:
+1.  Asupan kalori berlebihan: Konsumsi makanan dengan kalori yang berlebihan dibandingkan dengan kebutuhan tubuh dapat menyebabkan peningkatan lemak dan perkembangan obesitas hipertrofik.
+2.  Gaya hidup tidak aktif: Kurangnya aktivitas fisik dan gaya hidup yang tidak aktif dapat menyebabkan ketidakseimbangan energi, di mana asupan kalori lebih banyak daripada pembakaran kalori. Hal ini dapat menyebabkan penimbunan lemak dalam bentuk obesitas hipertrofik.
+3.  Faktor genetik: Ada faktor genetik yang memengaruhi kecenderungan seseorang untuk mengembangkan obesitas. Beberapa individu mungkin memiliki kecenderungan genetik yang membuat mereka rentan terhadap perkembangan obesitas hipertrofik.
+4.  Faktor hormonal: Ketidakseimbangan hormon tertentu, seperti resistensi insulin atau perubahan kadar hormon tiroid, dapat mempengaruhi metabolisme lemak dan berkontribusi pada obesitas hipertrofik.
+\n*>Solusi untuk Obesitas Hypertropic:
+1.  Pola makan sehat: Mengadopsi pola makan seimbang dengan fokus pada makanan nutrisi yang tinggi, seperti buah-buahan, sayuran, biji-bijian, protein tanpa lemak, dan lemak sehat. Hindari makanan olahan, makanan cepat saji, makanan tinggi gula, dan makanan tinggi lemak jenuh.
+2.  Kontrol asupan kalori: Mengendalikan asupan kalori sangat penting dalam manajemen berat badan. Perhatikan porsi makan dan hindari makan berlebihan. Menggunakan metode seperti mengukur makanan dan mencatat asupan kalori dapat membantu mengontrol konsumsi kalori.
+3.  Aktivitas fisik teratur: Melakukan latihan aerobik seperti berjalan kaki, jogging, bersepeda, atau berenang secara teratur untuk membakar kalori dan meningkatkan metabolisme. Latihan kekuatan juga penting untuk membangun massa otot, yang dapat membantu meningkatkan pembakaran lemak.
+4.  Perubahan gaya hidup: Tingkatkan aktivitas fisik sehari-hari dengan memilih untuk berjalan kaki, naik tangga, atau menggunakan sepeda daripada kendaraan bermotor. Selain itu, sediakan waktu untuk beristirahat yang cukup dan mengelola stres.
+5.  Pendampingan medis: Jika obesitas hipertrofik berhubungan dengan masalah kesehatan yang lebih serius, seperti resistensi insulin atau gangguan hormonal ''';
         break;
       case HYPERPLASTIC:
         descriptionResultDiagnosis =
-            'Anda mengalami obesitas tipe Hyperplastic. Jika Anda khawatir tentang berat badan atau risiko kesehatan Anda, sebaiknya berkonsultasi dengan dokter atau ahli gizi untuk mendapatkan saran yang tepat.';
+            '''Obesitas hiperplastik adalah kondisi di mana jumlah sel lemak (adiposit) meningkat secara signifikan dalam tubuh. Perbedaan dengan obesitas hipertrofik adalah pada obesitas hiperplastik, terjadi peningkatan jumlah sel lemak, sedangkan pada obesitas hipertrofik, ukuran sel lemak yang ada membesar.
+\n*>Penyebab Obesitas Hyperplastik:
+1.  Faktor Genetik: Faktor genetik dapat memainkan peran penting dalam rentan seseorang terhadap obesitas hiperplastik. Beberapa individu mungkin memiliki kecenderungan genetik yang membuat mereka lebih rentan terhadap peningkatan jumlah sel lemak.
+2.  Pola Makan yang Tidak Sehat: Konsumsi makanan yang kaya akan lemak, gula, dan kalori tinggi dapat menyebabkan peningkatan berat badan dan obesitas hiperplastik. Makan berlebihan dan asupan kalori yang berlebihan dapat memicu peningkatan jumlah sel lemak dalam tubuh.
+3.  Kurangnya Aktivitas Fisik: Gaya hidup tidak aktif dan kurangnya aktivitas fisik dapat berkontribusi pada perkembangan obesitas hiperplastik. Ketika energi yang dikonsumsi melalui makanan tidak dibakar melalui aktivitas fisik, tubuh akan menyimpan kelebihan kalori dalam bentuk lemak, yang dapat mengarah pada peningkatan jumlah sel lemak.
+\n*>Solusi untuk Obesitas Hyperplastik:
+1.  Pola Makan Sehat: Mengadopsi pola makan seimbang dengan mengonsumsi makanan yang kaya akan serat, vitamin, mineral, dan nutrisi esensial lainnya. Fokus pada makanan alami, seperti buah-buahan, sayuran, biji-bijian, protein tanpa lemak, dan lemak sehat. Hindari makanan olahan, makanan cepat saji, makanan tinggi gula, dan makanan tinggi lemak jenuh.
+2.  Aktivitas Fisik Teratur: Lakukan latihan aerobik, seperti berjalan kaki, berlari, bersepeda, atau berenang, secara teratur untuk membakar kalori dan meningkatkan metabolisme. Latihan kekuatan juga penting untuk membangun massa otot, yang dapat membantu meningkatkan pembakaran lemak.
+3.  Pembatasan Kalori: Mengontrol asupan kalori menjadi penting untuk mengelola berat badan. Perhatikan porsi makan dan hindari makan berlebihan. Menggunakan metode seperti mengukur makanan dan mencatat asupan kalori dapat membantu mengontrol konsumsi kalori.
+4.  Pendampingan Medis: Jika obesitas hiperplastik terkait dengan masalah kesehatan yang lebih serius, seperti masalah hormon atau gangguan metabolisme, konsultasikan dengan dokter atau ahli gizi yang kompeten untuk penanganan yang tepat. ''';
         break;
       default:
         descriptionResultDiagnosis = '';

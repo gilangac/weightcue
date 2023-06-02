@@ -4,17 +4,22 @@ import 'package:get/route_manager.dart';
 import 'package:weightcue_mobile/bindings/firebase_binding.dart';
 import 'package:weightcue_mobile/views/ahli/article/add_article_page.dart';
 import 'package:weightcue_mobile/views/ahli/bmi/riwayat_bmi_page.dart';
+import 'package:weightcue_mobile/views/ahli/diagnosis/detail_edit_diagnosis_page.dart';
 import 'package:weightcue_mobile/views/ahli/diagnosis/detail_riwayat_diagnosis_page.dart';
+import 'package:weightcue_mobile/views/ahli/diagnosis/edit_diagnosis_page.dart';
 import 'package:weightcue_mobile/views/ahli/diagnosis/riwayat_diagnosis_page.dart';
 import 'package:weightcue_mobile/views/ahli/home_ahli_page.dart';
 import 'package:weightcue_mobile/views/article/article_page.dart';
 import 'package:weightcue_mobile/views/article/detail_article_page.dart';
 import 'package:weightcue_mobile/views/auth/login_page.dart';
 import 'package:weightcue_mobile/views/bmi/calculator_bmi_page.dart';
+import 'package:weightcue_mobile/views/diagnosis/detail_riwayat_diagnosis_page2.dart';
 import 'package:weightcue_mobile/views/diagnosis/diagnosis_page.dart';
 import 'package:weightcue_mobile/views/diagnosis/diagnosis_room_page.dart';
 import 'package:weightcue_mobile/views/diagnosis/result_diagnosis_page.dart';
 import 'package:weightcue_mobile/views/home/home_page.dart';
+
+import '../views/diagnosis/riwayat_diagnosis_user_page.dart';
 
 part 'routes.dart';
 
@@ -29,6 +34,8 @@ class AppPages {
   static const DIAGNOSIS = _Paths.DIAGNOSIS;
   static const ROOM_DIAGNOSIS = _Paths.ROOM_DIAGNOSIS;
   static const RESULT_DIAGNOSIS = _Paths.RESULT_DIAGNOSIS;
+  static const RIWAYAT_DIAGNOSIS_USER = _Paths.RIWAYAT_DIAGNOSIS_USER;
+  static const DETAIL_RIWAYAT_DIAGNOSIS2 = _Paths.DETAIL_RIWAYAT_DIAGNOSIS2;
   static const NOT_FOUND = _Paths.NOT_FOUND;
 
   //AHLI route
@@ -36,6 +43,8 @@ class AppPages {
   static const ADD_ARTICLE = _Paths.ADD_ARTICLE;
   static const RIWAYAT_BMI = _Paths.RIWAYAT_BMI;
   static const RIWAYAT_DIAGNOSIS = _Paths.RIWAYAT_DIAGNOSIS;
+  static const EDIT_DIAGNOSIS = _Paths.EDIT_DIAGNOSIS;
+  static const DETAIL_EDIT_DIAGNOSIS = _Paths.DETAIL_EDIT_DIAGNOSIS;
   static const DETAIL_RIWAYAT_DIAGNOSIS = _Paths.DETAIL_RIWAYAT_DIAGNOSIS;
 }
 
@@ -50,6 +59,8 @@ abstract class _Paths {
   static const DIAGNOSIS = '/diagnosis';
   static const ROOM_DIAGNOSIS = '/room-diagnosis';
   static const RESULT_DIAGNOSIS = '/result-diagnosis';
+  static const RIWAYAT_DIAGNOSIS_USER = '/riwayat-diagnosis-user';
+  static const DETAIL_RIWAYAT_DIAGNOSIS2 = '/detail-riwayat-diagnosis2';
   static const NOT_FOUND = '/404';
 
   //AHLI route
@@ -57,5 +68,7 @@ abstract class _Paths {
   static const ADD_ARTICLE = '/add-article/';
   static const RIWAYAT_BMI = '/riwayat-bmi';
   static const RIWAYAT_DIAGNOSIS = '/riwayat-diagnosis';
+  static const EDIT_DIAGNOSIS = '/edit-diagnosis';
+  static const DETAIL_EDIT_DIAGNOSIS = '/detail-edit-diagnosis';
   static const DETAIL_RIWAYAT_DIAGNOSIS = '/detail-riwayat-diagnosis';
 }

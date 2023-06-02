@@ -10,6 +10,7 @@ import 'package:weightcue_mobile/models/article_model.dart';
 import 'package:weightcue_mobile/routes/pages.dart';
 import 'package:weightcue_mobile/services/service_preference.dart';
 import 'package:weightcue_mobile/widgets/general/app_bar.dart';
+import 'package:weightcue_mobile/widgets/general/empty_widget.dart';
 
 class ArticlePage extends StatelessWidget {
   ArticleController articleController = Get.put(ArticleController());
@@ -35,13 +36,15 @@ class ArticlePage extends StatelessWidget {
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
-              : ListView.builder(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-                  itemCount: articleController.listArticle.length,
-                  itemBuilder: (context, index) {
-                    return _cardArticle(index);
-                  }),
+              : articleController.listArticle.isEmpty
+                  ? const EmptyWidget()
+                  : ListView.builder(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 14, vertical: 14),
+                      itemCount: articleController.listArticle.length,
+                      itemBuilder: (context, index) {
+                        return _cardArticle(index);
+                      }),
         ));
   }
 
@@ -169,7 +172,8 @@ class ArticlePage extends StatelessWidget {
     return isAhli
         ? ElevatedButton(
             style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(), backgroundColor: AppColors.primaryColor,
+                shape: const CircleBorder(),
+                backgroundColor: AppColors.primaryColor,
                 elevation: 0.1),
             onPressed: () {
               Get.toNamed(AppPages.ADD_ARTICLE);

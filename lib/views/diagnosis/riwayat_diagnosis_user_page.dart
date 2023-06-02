@@ -7,16 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weightcue_mobile/constant/colors.dart';
-import 'package:weightcue_mobile/controllers/ahli/diagnosis/riwayat_diagnosis_controller.dart';
-import 'package:weightcue_mobile/helpers/dialog_helper.dart';
+import 'package:weightcue_mobile/controllers/diagnosis/riwayat_diagnosis_user_controller.dart';
 import 'package:weightcue_mobile/models/riwayat_diagnosis_model.dart';
 import 'package:weightcue_mobile/routes/pages.dart';
 import 'package:weightcue_mobile/widgets/general/app_bar.dart';
 import 'package:weightcue_mobile/widgets/general/circle_avatar.dart';
+import 'package:weightcue_mobile/widgets/general/empty_widget.dart';
 
-class RiwayatDiagnosisPage extends StatelessWidget {
-  RiwayatDiagnosisController controller = Get.put(RiwayatDiagnosisController());
-  RiwayatDiagnosisPage({Key? key}) : super(key: key);
+class RiwayatDiagnosisUserPage extends StatelessWidget {
+  RiwayatDiagnosisUserController controller =
+      Get.put(RiwayatDiagnosisUserController());
+  RiwayatDiagnosisUserPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,13 +38,15 @@ class RiwayatDiagnosisPage extends StatelessWidget {
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
-              : ListView.builder(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-                  itemCount: controller.listDiagnosis.length,
-                  itemBuilder: (context, index) {
-                    return _cardArticle(index);
-                  }),
+              : controller.listDiagnosis.isEmpty
+                  ? const EmptyWidget()
+                  : ListView.builder(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 14, vertical: 14),
+                      itemCount: controller.listDiagnosis.length,
+                      itemBuilder: (context, index) {
+                        return _cardArticle(index);
+                      }),
         ));
   }
 
@@ -54,7 +57,7 @@ class RiwayatDiagnosisPage extends StatelessWidget {
         GestureDetector(
           onTap: () async {
             await controller.onGetDetail(data);
-            Get.toNamed(AppPages.DETAIL_RIWAYAT_DIAGNOSIS, arguments: data);
+            Get.toNamed(AppPages.DETAIL_RIWAYAT_DIAGNOSIS2, arguments: data);
           },
           child: Container(
             width: Get.width,
