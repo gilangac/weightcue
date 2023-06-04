@@ -49,7 +49,6 @@ class DiagnosisPage extends StatelessWidget {
   }
 
   Widget _cardDiagnosis(int index) {
-    
     return Container(
       width: Get.width,
       margin: const EdgeInsets.only(bottom: 10),
@@ -140,8 +139,6 @@ class DiagnosisPage extends StatelessWidget {
                 : () {
                     diagnosisController
                         .onCheck(diagnosisController.answerGroup[0].value);
-                    // Get.offNamed(AppPages.RESULT_DIAGNOSIS);
-                    // diagnosisController.onSaveAnswer();
                   },
             child: Text(
               'Lanjutkan',

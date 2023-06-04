@@ -73,6 +73,7 @@ class DiagnosisController extends GetxController {
         .toList();
   }
 
+  //Pengecekan halaman awal
   void onCheck(int value) {
     listRoomQuestion.clear();
 
@@ -219,6 +220,7 @@ class DiagnosisController extends GetxController {
     answerGroupRoom.add(2.obs);
   }
 
+  //Pengecekan room
   onSaveAnswer() {
     for (int i = 0; i < answerGroupRoom.length; i++) {
       mapQuestion.add({
@@ -508,6 +510,7 @@ class DiagnosisController extends GetxController {
     Get.toNamed(AppPages.ROOM_DIAGNOSIS);
   }
 
+  //Tipe obesitas setiap room yg pertama
   actionResult1() {
     switch (roomDiagnosis) {
       case 1:
@@ -535,6 +538,7 @@ class DiagnosisController extends GetxController {
     onSendDataDiagnosis();
   }
 
+  //Tipe obesitas setiap room yg kedua
   actionResult2() {
     switch (roomDiagnosis) {
       case 1:
@@ -562,6 +566,7 @@ class DiagnosisController extends GetxController {
     onSendDataDiagnosis();
   }
 
+  //Pengecekan next room
   onCheckNext() {
     switch (listRoomQuestion[0].key) {
       case KG30:
