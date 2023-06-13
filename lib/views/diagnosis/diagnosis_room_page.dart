@@ -66,7 +66,6 @@ class DiagnosisRoomPage extends StatelessWidget {
   }
 
   Widget _cardDiagnosis(int index) {
-    
     return Container(
       width: Get.width,
       margin: const EdgeInsets.only(bottom: 10),
@@ -116,6 +115,9 @@ class DiagnosisRoomPage extends StatelessWidget {
                         diagnosisController.answerGroupRoom[index].value =
                             int.parse(value.toString());
                         onValidationAnswer();
+                        if (diagnosisController.listRoomQuestion.length == 1) {
+                          diagnosisController.onCheckNext();
+                        }
                       }),
                   RadioListTile(
                       title: Text("Tidak",
@@ -134,6 +136,9 @@ class DiagnosisRoomPage extends StatelessWidget {
                         diagnosisController.answerGroupRoom[index].value =
                             int.parse(value.toString());
                         onValidationAnswer();
+                        if (diagnosisController.listRoomQuestion.length == 1) {
+                          diagnosisController.onCheckNext();
+                        }
                       }),
                 ],
               ))

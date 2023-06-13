@@ -97,6 +97,8 @@ class DiagnosisPage extends StatelessWidget {
                         print(diagnosisController.mapQuestion);
                         diagnosisController.answerGroup[index].value =
                             int.parse(value.toString());
+                        diagnosisController
+                            .onCheck(diagnosisController.answerGroup[0].value);
                       }),
                   RadioListTile(
                       title: Text("Tidak",
@@ -114,6 +116,8 @@ class DiagnosisPage extends StatelessWidget {
                         print(diagnosisController.mapQuestion);
                         diagnosisController.answerGroup[index].value =
                             int.parse(value.toString());
+                        diagnosisController
+                            .onCheck(diagnosisController.answerGroup[0].value);
                       }),
                 ],
               ))

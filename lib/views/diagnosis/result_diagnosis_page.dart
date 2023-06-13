@@ -107,7 +107,7 @@ class ResultDiagnosisPage extends StatelessWidget {
             Text(controller.descriptionResultDiagnosis,
                 textAlign: TextAlign.justify,
                 style: GoogleFonts.poppins(
-                  fontSize: 16,
+                  fontSize: 18,
                   color: AppColors.primaryColor,
                   fontWeight: FontWeight.w400,
                 )),
@@ -119,6 +119,9 @@ class ResultDiagnosisPage extends StatelessWidget {
                 title: "Chat dengan ahli",
                 path: AppPages.HOME,
                 type: "about"),
+            const SizedBox(
+              height: 20,
+            ),
           ],
         ),
       )),
