@@ -71,7 +71,7 @@ class DetailRiwayatDiagnosisPage2 extends StatelessWidget {
                         child: Text(controller.descriptionResultDiagnosis,
                             textAlign: TextAlign.justify,
                             style: GoogleFonts.poppins(
-                              fontSize: 14,
+                              fontSize: 16,
                               color: AppColors.primaryColor,
                               fontWeight: FontWeight.w400,
                             )),
