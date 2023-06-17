@@ -5,6 +5,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pie_chart/pie_chart.dart';
 import 'package:weightcue_mobile/constant/code_diagnosis.dart';
 import 'package:weightcue_mobile/constant/colors.dart';
 import 'package:weightcue_mobile/controllers/diagnosis/diagnosis_controller.dart';
@@ -49,7 +50,10 @@ class ResultDiagnosisPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            Lottie.asset('assets/json/chechkup.json', width: Get.width * 0.8),
+            GestureDetector(
+                onTap: () {},
+                child: Lottie.asset('assets/json/chechkup.json',
+                    width: Get.width * 0.8)),
             Text(
                 "Hasil Diagnosis sesuai dengan gejala yang telah anda pilih adalah sebagai berikut :",
                 textAlign: TextAlign.justify,
@@ -61,6 +65,42 @@ class ResultDiagnosisPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
+            if (controller.resultDiagnosis != TIDAK_OBESITAS)
+              Obx(() => SizedBox(
+                    width: Get.width,
+                    height: Get.height * 0.23,
+                    child: PieChart(
+                      dataMap: controller.mapDiagnosis.value,
+                      animationDuration: const Duration(milliseconds: 1000),
+                      chartLegendSpacing: 32,
+                      colorList: const <Color>[
+                        AppColors.red,
+                        AppColors.green2,
+                        AppColors.yellow,
+                        AppColors.blue,
+                      ],
+                      initialAngleInDegree: 0,
+                      chartType: ChartType.disc,
+                      ringStrokeWidth: 32,
+                      centerText: "Diagnosis",
+                      legendOptions: const LegendOptions(
+                        showLegendsInRow: false,
+                        legendPosition: LegendPosition.right,
+                        showLegends: true,
+                        legendTextStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      chartValuesOptions: const ChartValuesOptions(
+                        showChartValueBackground: true,
+                        chartValueBackgroundColor: AppColors.white,
+                        showChartValues: true,
+                        showChartValuesInPercentage: true,
+                        showChartValuesOutside: false,
+                        decimalPlaces: 0,
+                      ),
+                    ),
+                  )),
             if (controller.resultDiagnosis == TIDAK_OBESITAS)
               Column(
                 children: [
@@ -162,7 +202,7 @@ class ResultDiagnosisPage extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: AppColors.green),
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   child: Icon(
                     icon,
                     color: AppColors.white,
@@ -175,7 +215,7 @@ class ResultDiagnosisPage extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       color: AppColors.grey),
                 ),
-                trailing: Icon(Feather.chevron_right),
+                trailing: const Icon(Feather.chevron_right),
               ),
             ),
           ),

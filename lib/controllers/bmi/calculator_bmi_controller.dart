@@ -71,7 +71,9 @@ class CalculatorBmiController extends GetxController {
       }
 
       DialogHelper.showResultBmi(
-          title: bmi.toStringAsFixed(1), description: descriptionBmi);
+          title: bmi.toStringAsFixed(1),
+          description: descriptionBmi,
+          isMale: isMaleType.value);
       onSendDataBmi();
     }
   }

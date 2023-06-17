@@ -234,7 +234,8 @@ class DialogHelper {
     );
   }
 
-  static showResultBmi({String? title, String? description}) {
+  static showResultBmi(
+      {String? title, String? description, required bool isMale}) {
     Get.dialog(
       Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -244,13 +245,18 @@ class DialogHelper {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                height: Get.height * 0.5,
+                height: Get.height * 0.4,
                 child: Scrollbar(
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Lottie.asset('assets/json/chechkup.json'),
+                        Image.asset(isMale
+                            ? 'assets/images/bmi-male.png'
+                            : 'assets/images/bmi-female.png'),
+                        SizedBox(
+                          height: 20,
+                        ),
                         Text(
                           title ?? '',
                           style: GoogleFonts.poppins(fontSize: 18),

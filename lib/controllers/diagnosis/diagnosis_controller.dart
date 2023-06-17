@@ -32,6 +32,12 @@ class DiagnosisController extends GetxController {
   var descriptionResultDiagnosis = '';
   var roomDiagnosis = 0;
   var mapQuestion = [];
+  RxMap<String, double> mapDiagnosis = {
+    'Apel': 0.0,
+    'Genoid': 0.0,
+    'Hypertropic': 0.0,
+    'Hyperplastic': 0.0,
+  }.obs;
 
   var listRoom1 = [KG2, KG7, KG17, KG9, KG11, KG20];
   var listRoom2 = [KG19, KG25, KG30, KG14, KG22, KG13];
@@ -39,6 +45,54 @@ class DiagnosisController extends GetxController {
   var listRoom4 = [KG10, KG18, KG33, KG22, KG23, KG39];
   var listRoom5 = [KG35, KG36, KG37, KG43, KG18, KG28];
   var listRoom6 = [KG39, KG40, KG18, KG1, KG15, KG43];
+
+  var qApel = [
+    KG2,
+    KG7,
+    KG17,
+    KG30,
+    KG19,
+    KG25,
+    KG30,
+    KG41,
+    KG1,
+    KG31,
+    KG32,
+    KG34,
+    KG3,
+    KG4,
+    KG6,
+    KG12
+  ];
+  var qGenoid = [
+    KG9,
+    KG11,
+    KG20,
+    KG10,
+    KG18,
+    KG33,
+    KG35,
+    KG37,
+    KG43,
+    KG28,
+    KG3,
+    KG12,
+    KG8
+  ];
+  var qHypertropic = [
+    KG14,
+    KG13,
+    KG22,
+    KG23,
+    KG39,
+    KG40,
+    KG18,
+    KG42,
+    KG4,
+    KG12,
+    KG26
+  ];
+  var qHyperplastik = [KG1, KG15, KG16, KG43, KG18, KG28, KG6, KG8, KG26];
 
   @override
   void onInit() async {
@@ -86,7 +140,7 @@ class DiagnosisController extends GetxController {
           break;
         default:
           resultDiagnosis = TIDAK_OBESITAS;
-          Get.toNamed(AppPages.RESULT_DIAGNOSIS);
+          toResultPage();
           onSendDataDiagnosis();
           break;
       }
@@ -426,6 +480,9 @@ class DiagnosisController extends GetxController {
     } else if (q1 && !q2 && !q3 && !q4 && !q5 && q6) {
       //63
       actionNext();
+    } else if (q1 && q2 && q3 && !q4 && !q5 && !q6) {
+      //64
+      actionResult3();
     } else if (!q1 && !q2 && !q3 && !q4 && !q5 && !q6) {
       listRoomQuestion.clear();
       answerGroupRoom.clear();
@@ -534,7 +591,7 @@ class DiagnosisController extends GetxController {
       default:
         break;
     }
-    Get.toNamed(AppPages.RESULT_DIAGNOSIS);
+    toResultPage();
     onSendDataDiagnosis();
   }
 
@@ -562,7 +619,35 @@ class DiagnosisController extends GetxController {
       default:
         break;
     }
-    Get.toNamed(AppPages.RESULT_DIAGNOSIS);
+    toResultPage();
+    onSendDataDiagnosis();
+  }
+
+  //Tipe obesitas setiap room yg pertama
+  actionResult3() {
+    switch (roomDiagnosis) {
+      case 1:
+        resultDiagnosis = APEL;
+        break;
+      case 2:
+        resultDiagnosis = APEL;
+        break;
+      case 3:
+        resultDiagnosis = APEL;
+        break;
+      case 4:
+        resultDiagnosis = GENOID;
+        break;
+      case 5:
+        resultDiagnosis = GENOID;
+        break;
+      case 6:
+        resultDiagnosis = HYPERTROPIC;
+        break;
+      default:
+        break;
+    }
+    toResultPage();
     onSendDataDiagnosis();
   }
 
@@ -576,7 +661,7 @@ class DiagnosisController extends GetxController {
         } else {
           resultDiagnosis = APEL;
         }
-        Get.offNamed(AppPages.RESULT_DIAGNOSIS);
+        toResultPage();
         break;
       case KG41:
         onAddToMap(KG41, answerGroupRoom[0].value);
@@ -585,7 +670,7 @@ class DiagnosisController extends GetxController {
         } else {
           resultDiagnosis = APEL;
         }
-        Get.offNamed(AppPages.RESULT_DIAGNOSIS);
+        toResultPage();
         break;
       case KG35:
         onAddToMap(KG35, answerGroupRoom[0].value);
@@ -594,7 +679,6 @@ class DiagnosisController extends GetxController {
         } else {
           resultDiagnosis = GENOID;
         }
-        Get.offNamed(AppPages.RESULT_DIAGNOSIS);
         break;
       case KG33:
         onAddToMap(KG33, answerGroupRoom[0].value);
@@ -603,7 +687,7 @@ class DiagnosisController extends GetxController {
         } else {
           resultDiagnosis = GENOID;
         }
-        Get.offNamed(AppPages.RESULT_DIAGNOSIS);
+        toResultPage();
         break;
       case KG42:
         onAddToMap(KG42, answerGroupRoom[0].value);
@@ -612,7 +696,7 @@ class DiagnosisController extends GetxController {
         } else {
           resultDiagnosis = HYPERTROPIC;
         }
-        Get.offNamed(AppPages.RESULT_DIAGNOSIS);
+        toResultPage();
         break;
       default:
     }
@@ -627,6 +711,45 @@ class DiagnosisController extends GetxController {
     });
 
     print(mapQuestion);
+  }
+
+  toResultPage() {
+    Get.offNamed(AppPages.RESULT_DIAGNOSIS);
+    generateChart();
+  }
+
+  generateChart() {
+    double apel = 0;
+    double genoid = 0;
+    double hypertropic = 0;
+    double hyperplastic = 0;
+
+    mapQuestion.forEach(
+      (element) {
+        if (element['answer'] == 1) {
+          if (qApel.any((data) => data == element['key'])) {
+            apel;
+          }
+
+          if (qGenoid.any((data) => data == element['key'])) {
+            genoid++;
+          }
+
+          if (qHypertropic.any((data) => data == element['key'])) {
+            hypertropic++;
+          }
+
+          if (qHyperplastik.any((data) => data == element['key'])) {
+            hyperplastic++;
+          }
+        }
+      },
+    );
+
+    mapDiagnosis['Apel'] = apel;
+    mapDiagnosis['Genoid'] = genoid;
+    mapDiagnosis['Hypertropic'] = hypertropic;
+    mapDiagnosis['Hyperplastic'] = hyperplastic;
   }
 
   getResultDiagnosis() {
