@@ -46,7 +46,8 @@ class CalculatorBmiPage extends StatelessWidget {
                     inputAction: TextInputAction.next,
                     inputFormater: [
                       FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                      FilteringTextInputFormatter.digitsOnly
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(3),
                     ],
                     validator: (value) {
                       RegExp _numeric = RegExp(r'^-?[0-9]+$');
@@ -68,7 +69,8 @@ class CalculatorBmiPage extends StatelessWidget {
                     inputAction: TextInputAction.next,
                     inputFormater: [
                       FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                      FilteringTextInputFormatter.digitsOnly
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(3),
                     ],
                     validator: (value) {
                       RegExp _numeric = RegExp(r'^-?[0-9]+$');
