@@ -27,6 +27,62 @@ class RiwayatDiagnosisUserController extends GetxController {
   var listDetail = [].obs;
   var rawResult = [].obs;
   var descriptionResultDiagnosis = '';
+  var resultDiagnosis = ''.obs;
+
+  RxMap<String, double> mapDiagnosis = {
+    'Apel': 0.0,
+    'Genoid': 0.0,
+    'Hypertropic': 0.0,
+    'Hyperplastic': 0.0,
+  }.obs;
+
+  var qApel = [
+    KG2,
+    KG7,
+    KG17,
+    KG30,
+    KG19,
+    KG25,
+    KG30,
+    KG41,
+    KG1,
+    KG31,
+    KG32,
+    KG34,
+    KG3,
+    KG4,
+    KG6,
+    KG12
+  ];
+  var qGenoid = [
+    KG9,
+    KG11,
+    KG20,
+    KG10,
+    KG18,
+    KG33,
+    KG35,
+    KG37,
+    KG43,
+    KG28,
+    KG3,
+    KG12,
+    KG8
+  ];
+  var qHypertropic = [
+    KG14,
+    KG13,
+    KG22,
+    KG23,
+    KG39,
+    KG40,
+    KG18,
+    KG42,
+    KG4,
+    KG12,
+    KG26
+  ];
+  var qHyperplastik = [KG1, KG15, KG16, KG43, KG18, KG28, KG6, KG8, KG26];
 
   @override
   void onInit() async {
@@ -63,6 +119,7 @@ class RiwayatDiagnosisUserController extends GetxController {
     rawResult.clear();
     listDetail.clear();
     listQuestionFilter.clear();
+    resultDiagnosis.value = dataModel.result ?? '';
 
     getResultDiagnosis(dataModel.result ?? '');
     rawResult.value = json.decode(dataModel.data ?? '');
@@ -123,6 +180,40 @@ class RiwayatDiagnosisUserController extends GetxController {
           Get.back();
           await onDeletePost(idDiagnosis, isDetail: isDetail);
         });
+  }
+
+  generateChart() {
+    double apel = 0;
+    double genoid = 0;
+    double hypertropic = 0;
+    double hyperplastic = 0;
+
+    rawResult.forEach(
+      (element) {
+        if (element['answer'] == 1) {
+          if (qApel.any((data) => data == element['key'])) {
+            apel;
+          }
+
+          if (qGenoid.any((data) => data == element['key'])) {
+            genoid++;
+          }
+
+          if (qHypertropic.any((data) => data == element['key'])) {
+            hypertropic++;
+          }
+
+          if (qHyperplastik.any((data) => data == element['key'])) {
+            hyperplastic++;
+          }
+        }
+      },
+    );
+
+    mapDiagnosis['Apel'] = apel;
+    mapDiagnosis['Genoid'] = genoid;
+    mapDiagnosis['Hypertropic'] = hypertropic;
+    mapDiagnosis['Hyperplastic'] = hyperplastic;
   }
 
   getResultDiagnosis(String resultDiagnosis) {

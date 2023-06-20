@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pie_chart/pie_chart.dart';
+import 'package:weightcue_mobile/constant/code_diagnosis.dart';
 import 'package:weightcue_mobile/constant/colors.dart';
 import 'package:weightcue_mobile/controllers/diagnosis/riwayat_diagnosis_user_controller.dart';
 import 'package:weightcue_mobile/models/riwayat_diagnosis_model.dart';
@@ -40,6 +42,44 @@ class DetailRiwayatDiagnosisPage2 extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      if (controller.resultDiagnosis.value != TIDAK_OBESITAS)
+                        Obx(() => Container(
+                              padding: const EdgeInsets.all(12),
+                              width: Get.width,
+                              height: Get.height * 0.23,
+                              child: PieChart(
+                                dataMap: controller.mapDiagnosis.value,
+                                animationDuration:
+                                    const Duration(milliseconds: 1000),
+                                chartLegendSpacing: 32,
+                                colorList: const <Color>[
+                                  AppColors.red,
+                                  AppColors.green2,
+                                  AppColors.yellow,
+                                  AppColors.blue,
+                                ],
+                                initialAngleInDegree: 0,
+                                chartType: ChartType.disc,
+                                ringStrokeWidth: 32,
+                                centerText: "Diagnosis",
+                                legendOptions: const LegendOptions(
+                                  showLegendsInRow: false,
+                                  legendPosition: LegendPosition.right,
+                                  showLegends: true,
+                                  legendTextStyle: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                chartValuesOptions: const ChartValuesOptions(
+                                  showChartValueBackground: true,
+                                  chartValueBackgroundColor: AppColors.white,
+                                  showChartValues: true,
+                                  showChartValuesInPercentage: true,
+                                  showChartValuesOutside: false,
+                                  decimalPlaces: 0,
+                                ),
+                              ),
+                            )),
                       const SizedBox(
                         height: 10,
                       ),

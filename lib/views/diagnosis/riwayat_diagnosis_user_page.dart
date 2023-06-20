@@ -57,6 +57,7 @@ class RiwayatDiagnosisUserPage extends StatelessWidget {
         GestureDetector(
           onTap: () async {
             await controller.onGetDetail(data);
+            controller.generateChart();
             Get.toNamed(AppPages.DETAIL_RIWAYAT_DIAGNOSIS2, arguments: data);
           },
           child: Container(

@@ -17,7 +17,7 @@ class DetailEditDiagnosisPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(title: "Edit Artikel"),
+      appBar: appBar(title: "Edit Diagnosis"),
       body: _body(),
       backgroundColor: AppColors.backgroundColor,
     );

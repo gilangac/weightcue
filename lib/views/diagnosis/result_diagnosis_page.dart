@@ -66,7 +66,8 @@ class ResultDiagnosisPage extends StatelessWidget {
               height: 10,
             ),
             if (controller.resultDiagnosis != TIDAK_OBESITAS)
-              Obx(() => SizedBox(
+              Obx(() => Container(
+                    padding: const EdgeInsets.all(12),
                     width: Get.width,
                     height: Get.height * 0.23,
                     child: PieChart(
