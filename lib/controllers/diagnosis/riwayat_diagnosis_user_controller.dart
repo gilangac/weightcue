@@ -123,9 +123,12 @@ class RiwayatDiagnosisUserController extends GetxController {
 
     getResultDiagnosis(dataModel.result ?? '');
     rawResult.value = json.decode(dataModel.data ?? '');
+    print('raw : ${rawResult}');
     rawResult.forEach((element) {
       listDetail.add(element['key']);
     });
+    print('detail : ${listDetail}');
+    generateChart();
     filterQuestion();
   }
 
@@ -192,7 +195,7 @@ class RiwayatDiagnosisUserController extends GetxController {
       (element) {
         if (element['answer'] == 1) {
           if (qApel.any((data) => data == element['key'])) {
-            apel;
+            apel++;
           }
 
           if (qGenoid.any((data) => data == element['key'])) {

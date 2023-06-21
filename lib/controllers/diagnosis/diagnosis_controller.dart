@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls, avoid_print
+// ignore_for_file: avoid_function_literals_in_foreach_calls, avoid_print, unnecessary_brace_in_string_interps
 
 import 'dart:convert';
 import 'dart:developer';
@@ -666,7 +666,7 @@ class DiagnosisController extends GetxController {
       case KG41:
         onAddToMap(KG41, answerGroupRoom[0].value);
         if (answerGroupRoom[0].value == 0) {
-          resultDiagnosis = HYPERPLASTIC;
+          resultDiagnosis = HYPERTROPIC;
         } else {
           resultDiagnosis = APEL;
         }
@@ -724,27 +724,60 @@ class DiagnosisController extends GetxController {
     double hypertropic = 0;
     double hyperplastic = 0;
 
-    mapQuestion.forEach(
-      (element) {
-        if (element['answer'] == 1) {
-          if (qApel.any((data) => data == element['key'])) {
-            apel;
-          }
+    var listApel = [];
+    var listGenoid = [];
+    var listTropic = [];
+    var listPlastic = [];
 
-          if (qGenoid.any((data) => data == element['key'])) {
-            genoid++;
-          }
-
-          if (qHypertropic.any((data) => data == element['key'])) {
-            hypertropic++;
-          }
-
-          if (qHyperplastik.any((data) => data == element['key'])) {
-            hyperplastic++;
-          }
+    Future.forEach(mapQuestion, (element) {
+      if (element['answer'] == 1) {
+        if (qApel.any((data) => data == element['key'])) {
+          apel++;
+          listApel.add(element['key']);
         }
-      },
-    );
+
+        if (qGenoid.any((data) => data == element['key'])) {
+          genoid++;
+          listGenoid.add(element['key']);
+        }
+
+        if (qHypertropic.any((data) => data == element['key'])) {
+          hypertropic++;
+          listTropic.add(element['key']);
+        }
+
+        if (qHyperplastik.any((data) => data == element['key'])) {
+          hyperplastic++;
+          listPlastic.add(element['key']);
+        }
+      }
+    });
+
+    // mapQuestion.forEach(
+    //   (element) {
+    //     if (element['answer'] == 1) {
+    //       if (qApel.any((data) => data == element['key'])) {
+    //         apel++;
+    //       }
+
+    //       if (qGenoid.any((data) => data == element['key'])) {
+    //         genoid++;
+    //       }
+
+    //       if (qHypertropic.any((data) => data == element['key'])) {
+    //         hypertropic++;
+    //       }
+
+    //       if (qHyperplastik.any((data) => data == element['key'])) {
+    //         hyperplastic++;
+    //       }
+    //     }
+    //   },
+    // );
+    print('apel : ${listApel}');
+    print('genoid : ${listGenoid}');
+    print('tropic : ${listTropic}');
+    print('plastic : ${listPlastic}');
 
     mapDiagnosis['Apel'] = apel;
     mapDiagnosis['Genoid'] = genoid;

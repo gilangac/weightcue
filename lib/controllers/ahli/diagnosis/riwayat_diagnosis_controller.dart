@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls, deprecated_member_use
+// ignore_for_file: avoid_function_literals_in_foreach_calls, deprecated_member_use, unnecessary_brace_in_string_interps, avoid_print
 
 import 'dart:convert';
 import 'dart:developer';
@@ -183,27 +183,38 @@ class RiwayatDiagnosisController extends GetxController {
     double hypertropic = 0;
     double hyperplastic = 0;
 
-    rawResult.forEach(
-      (element) {
-        if (element['answer'] == 1) {
-          if (qApel.any((data) => data == element['key'])) {
-            apel;
-          }
+    var listApel = [];
+    var listGenoid = [];
+    var listTropic = [];
+    var listPlastic = [];
 
-          if (qGenoid.any((data) => data == element['key'])) {
-            genoid++;
-          }
-
-          if (qHypertropic.any((data) => data == element['key'])) {
-            hypertropic++;
-          }
-
-          if (qHyperplastik.any((data) => data == element['key'])) {
-            hyperplastic++;
-          }
+    rawResult.forEach((element) {
+      if (element['answer'] == 1) {
+        if (qApel.any((data) => data == element['key'])) {
+          apel++;
+          listApel.add(element['key']);
         }
-      },
-    );
+
+        if (qGenoid.any((data) => data == element['key'])) {
+          genoid++;
+          listGenoid.add(element['key']);
+        }
+
+        if (qHypertropic.any((data) => data == element['key'])) {
+          hypertropic++;
+          listTropic.add(element['key']);
+        }
+
+        if (qHyperplastik.any((data) => data == element['key'])) {
+          hyperplastic++;
+          listPlastic.add(element['key']);
+        }
+      }
+    });
+    print('apel : ${listApel}');
+    print('genoid : ${listGenoid}');
+    print('tropic : ${listTropic}');
+    print('plastic : ${listPlastic}');
 
     mapDiagnosis['Apel'] = apel;
     mapDiagnosis['Genoid'] = genoid;
