@@ -17,6 +17,7 @@ import 'package:weightcue_mobile/views/diagnosis/detail_riwayat_diagnosis_page2.
 import 'package:weightcue_mobile/views/diagnosis/diagnosis_page.dart';
 import 'package:weightcue_mobile/views/diagnosis/diagnosis_room_page.dart';
 import 'package:weightcue_mobile/views/diagnosis/result_diagnosis_page.dart';
+import 'package:weightcue_mobile/views/home/edit_profile_page.dart';
 import 'package:weightcue_mobile/views/home/home_page.dart';
 
 import '../views/diagnosis/riwayat_diagnosis_user_page.dart';
@@ -36,6 +37,7 @@ class AppPages {
   static const RESULT_DIAGNOSIS = _Paths.RESULT_DIAGNOSIS;
   static const RIWAYAT_DIAGNOSIS_USER = _Paths.RIWAYAT_DIAGNOSIS_USER;
   static const DETAIL_RIWAYAT_DIAGNOSIS2 = _Paths.DETAIL_RIWAYAT_DIAGNOSIS2;
+  static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
   static const NOT_FOUND = _Paths.NOT_FOUND;
 
   //AHLI route
@@ -61,6 +63,7 @@ abstract class _Paths {
   static const RESULT_DIAGNOSIS = '/result-diagnosis';
   static const RIWAYAT_DIAGNOSIS_USER = '/riwayat-diagnosis-user';
   static const DETAIL_RIWAYAT_DIAGNOSIS2 = '/detail-riwayat-diagnosis2';
+  static const EDIT_PROFILE = '/edit-profile';
   static const NOT_FOUND = '/404';
 
   //AHLI route

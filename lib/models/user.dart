@@ -4,6 +4,7 @@ class UserModel {
   String? idUser;
   String? name;
   String? email;
+  String? photo;
   int? type;
   Timestamp? date;
 
@@ -11,6 +12,7 @@ class UserModel {
     this.idUser,
     this.name,
     this.email,
+    this.photo,
     this.type,
     this.date,
   });
@@ -19,6 +21,7 @@ class UserModel {
         idUser: json["idUser"],
         name: json["name"],
         email: json["email"],
+        photo: json["photo"],
         type: json["type"],
         date: json["date"],
       );
@@ -27,6 +30,7 @@ class UserModel {
         "idUser": idUser,
         "name": name,
         "email": email,
+        "photo": photo,
         "type": type,
         "date": date,
       };

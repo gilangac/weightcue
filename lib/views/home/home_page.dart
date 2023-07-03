@@ -96,9 +96,7 @@ class HomePage extends StatelessWidget {
                   const SizedBox(
                     height: 4,
                   ),
-                  Text(
-                      (firebaseAuthC.auth.currentUser?.displayName ?? "")
-                          .toUpperCase(),
+                  Text((homeController.dataUser?.name ?? "").toUpperCase(),
                       style: GoogleFonts.poppins(
                         fontSize: 18,
                         height: 1,
@@ -114,7 +112,9 @@ class HomePage extends StatelessWidget {
           child: GestureDetector(
             onTap: () => _bottomSheetContentProfile(),
             child: circleAvatar(
-                imageData: firebaseAuthC.auth.currentUser?.photoURL ?? "a",
+                imageData: homeController.dataUser?.photo ??
+                    firebaseAuthC.auth.currentUser?.photoURL ??
+                    "a",
                 nameData: (firebaseAuthC.auth.currentUser?.displayName ?? "a"),
                 size: 25),
           ),
@@ -256,6 +256,11 @@ class HomePage extends StatelessWidget {
                     child: Column(
                       children: [
                         _listAction2(
+                            icon: Icons.settings,
+                            title: "Edit Profil",
+                            path: AppPages.EDIT_PROFILE,
+                            type: "edit-profile"),
+                        _listAction2(
                             icon: Icons.whatsapp,
                             title: "Chat dengan ahli",
                             path: AppPages.HOME,
@@ -307,7 +312,9 @@ class HomePage extends StatelessWidget {
               leading: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    color: AppColors.green),
+                    color: type != 'about'
+                        ? AppColors.lightGrey
+                        : AppColors.green),
                 padding: EdgeInsets.all(8),
                 child: Icon(
                   icon,

@@ -117,7 +117,7 @@ class ResultDiagnosisPage extends StatelessWidget {
                       maxLines: 3,
                       style: GoogleFonts.poppins(
                         fontSize: 16,
-                        color: AppColors.primaryColor,
+                        color: const Color.fromARGB(255, 8, 172, 57),
                         fontWeight: FontWeight.w600,
                       )),
                 ],
@@ -137,7 +137,7 @@ class ResultDiagnosisPage extends StatelessWidget {
                       maxLines: 3,
                       style: GoogleFonts.poppins(
                         fontSize: 16,
-                        color: AppColors.primaryColor,
+                        color: const Color.fromARGB(255, 141, 11, 11),
                         fontWeight: FontWeight.w600,
                       )),
                 ],

@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:weightcue_mobile/models/user.dart';
 import 'package:weightcue_mobile/services/service_preference.dart';
@@ -17,7 +18,20 @@ class HomeController extends GetxController {
   @override
   void onInit() async {
     onGetDataUser();
+    permissionsRequest();
     super.onInit();
+  }
+
+  permissionsRequest() async {
+    // You can request multiple permissions at once.
+
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.location,
+      Permission.storage,
+      Permission.camera,
+      Permission.notification,
+      Permission.photos,
+    ].request();
   }
 
   Future<void> onGetDataUser() async {
@@ -31,6 +45,7 @@ class HomeController extends GetxController {
           idUser: data["idUser"],
           email: data["email"],
           name: data["name"],
+          photo: data["photo"],
           type: data["type"],
           date: data["date"],
         );

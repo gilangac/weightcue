@@ -483,6 +483,24 @@ class DiagnosisController extends GetxController {
     } else if (q1 && q2 && q3 && !q4 && !q5 && !q6) {
       //64
       actionResult3();
+    } else if (q1 && !q2 && q3 && q4 && !q5 && !q6) {
+      //65
+      actionResult3();
+    } else if (!q1 && !q2 && !q3 && q4 && !q5 && !q6) {
+      //66
+      actionResult2();
+    } else if (!q1 && q2 && !q3 && !q4 && q5 && !q6) {
+      //67
+      actionNext();
+    } else if (q1 && q2 && !q3 && !q4 && q5 && q6) {
+      //68
+      actionNext();
+    } else if (!q1 && !q2 && q3 && !q4 && !q5 && !q6) {
+      //69
+      actionResult3();
+    } else if (q1 && !q2 && q3 && !q4 && q5 && !q6) {
+      //70
+      actionResult3();
     } else if (!q1 && !q2 && !q3 && !q4 && !q5 && !q6) {
       listRoomQuestion.clear();
       answerGroupRoom.clear();
@@ -860,7 +878,6 @@ class DiagnosisController extends GetxController {
   }
 
   onSendDataDiagnosis() async {
-    print("DATA SENDED");
     String idDiagnosis = DateFormat("yyyyMMddHHmmss").format(DateTime.now()) +
         ServiceUtils.randomString(4);
     final dateNow = DateTime.now();

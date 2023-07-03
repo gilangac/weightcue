@@ -25,6 +25,7 @@ class AppRoutes {
     GetPage(name: _Paths.RIWAYAT_BMI, page: () => RiwayatBmiPage()),
     GetPage(name: _Paths.RIWAYAT_DIAGNOSIS, page: () => RiwayatDiagnosisPage()),
     GetPage(name: _Paths.EDIT_DIAGNOSIS, page: () => EditDiagnosisPage()),
+    GetPage(name: _Paths.EDIT_PROFILE, page: () => EditProfilePage()),
     GetPage(
         name: _Paths.DETAIL_EDIT_DIAGNOSIS,
         page: () => DetailEditDiagnosisPage()),

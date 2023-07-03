@@ -73,7 +73,7 @@ class ArticlePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(data.judul ?? '',
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.start,
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   height: 1.5,
